@@ -384,6 +384,10 @@ INPUT figures/figure5.png
 INPUT figures/table1.png
 INPUT figures/table2.png
 INPUT figures/table3.png
+INPUT figures/table4.png
+INPUT figures/table5.png
+INPUT figures/table6.png
+INPUT figures/table7.png
 OUTPUT Almond2007.nav
 OUTPUT Almond2007.toc
 OUTPUT Almond2007.snm

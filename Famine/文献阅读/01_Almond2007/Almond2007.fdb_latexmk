@@ -1,12 +1,12 @@
 # Fdb version 3
-["xdvipdfmx"] 1589550359 "Almond2007.xdv" "Almond2007.pdf" "Almond2007" 1589550360
-  "Almond2007.xdv" 1589550359 432592 8f4d8c9cca9b2cd87feb18fd86779996 "xelatex"
+["xdvipdfmx"] 1590495218 "Almond2007.xdv" "Almond2007.pdf" "Almond2007" 1590495219
+  "Almond2007.xdv" 1590495217 586836 73faaa035c9197c862642882e30885ee "xelatex"
   (generated)
   "Almond2007.pdf"
-["xelatex"] 1589550356 "Almond2007.tex" "Almond2007.xdv" "Almond2007" 1589550360
+["xelatex"] 1590495213 "Almond2007.tex" "Almond2007.xdv" "Almond2007" 1590495219
   "/Library/Fonts/Songti.ttc" 1534542990 66933252 bc432ad7628283e59cc866a2cb6e3437 ""
   "/System/Library/Fonts/PingFang.ttc" 1534542991 80005872 c5152dd6f256595adcf0200e1d4adc10 ""
-  "/dev/null" 1589550360 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1590495219 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -212,19 +212,23 @@
   "/usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf" 1557092114 35484 cb1661360667bf4db662a8895053b554 ""
   "/usr/local/texlive/2019/texmf-var/web2c/xetex/xelatex.fmt" 1575254624 3751082 9d90f98373be2c712eda7eabd72485ce ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "Almond2007.aux" 1589550359 3384 b923950a504b6601793dc01e56c6e225 "xelatex"
-  "Almond2007.nav" 1589550359 1574 f5abf7444d939a8c2cd188b6df8c9c87 "xelatex"
-  "Almond2007.out" 1589550358 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "Almond2007.tex" 1589550352 7517 403cc41fe5d08e0f15de3071a9c31f2f ""
+  "Almond2007.aux" 1590495217 4239 bd2f4fec653d325a2b8bb1b7e34199d2 "xelatex"
+  "Almond2007.nav" 1590495217 2039 5a4196ea47006e239fc20568aaec1af6 "xelatex"
+  "Almond2007.out" 1590495216 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "Almond2007.tex" 1590495211 13234 679b8b10ccf427a59c3fa009a2c1e7ef ""
   "figures/figure5.png" 1589512444 107323 e64404282bbda76572657c02200eb971 ""
   "figures/table1.png" 1589514539 73358 8bcb0ef5b4695546aeb08564bc5152fa ""
   "figures/table2.png" 1589518605 60717 fbe6e5379c1332824599dbaaa7e3cc7c ""
   "figures/table3.png" 1589532685 50850 e89eb3385c44c0ab0c58183a677e58c9 ""
+  "figures/table4.png" 1589628298 59130 ae5461e3934c3971fbd190eb6c756a50 ""
+  "figures/table5.png" 1589628335 85362 7955f06d5378d2d9d5eb418cbc44ed33 ""
+  "figures/table6.png" 1589628346 47230 b499e7c030068765f34a8b7fd8749e6c ""
+  "figures/table7.png" 1589634798 84010 5e52667d1038950e7a226eb8684444bd ""
   (generated)
-  "Almond2007.snm"
-  "Almond2007.out"
   "Almond2007.toc"
-  "Almond2007.nav"
+  "Almond2007.out"
   "Almond2007.xdv"
   "Almond2007.log"
   "Almond2007.aux"
+  "Almond2007.nav"
+  "Almond2007.snm"
