@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: keke.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Illegal end of database file---line 19 of file references.bib
+ : abstract = {We show that psychological well-being in adulthood varies with circumstance in early life. Combining a time series of real producer prices of cocoa with a nationally representative household survey in Ghana, we find that a one standard deviation rise in the cocoa price in early life decreases the likelihood of severe mental distress in adulthood by 3 percentage points (half the mean prevalence) for cohorts born in cocoa-producing regions relative to those born in other regions. Impacts on related personality traits are consistent with this result. Maternal nutrition, reinforcing childhood investments, and adult circumstance are likely operative channels of impact.}
+ :                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+I'm skipping whatever remains of this entry
+You've used 2 entries,
+            2773 wiz_defined-function locations,
+            605 strings with 5119 characters,
+and the built_in function-call counts, 1079 in all, are:
+= -- 92
+> -- 60
+< -- 0
++ -- 20
+- -- 18
+* -- 102
+:= -- 168
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 12
+chr.to.int$ -- 2
+cite$ -- 4
+duplicate$ -- 42
+empty$ -- 89
+format.name$ -- 20
+if$ -- 221
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 2
+newline$ -- 18
+num.names$ -- 8
+pop$ -- 20
+preamble$ -- 1
+purify$ -- 10
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 64
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 0
+while$ -- 8
+width$ -- 0
+write$ -- 33
+(There was 1 error message)
