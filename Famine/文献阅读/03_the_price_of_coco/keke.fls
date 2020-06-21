@@ -385,6 +385,9 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT figures/table1.png
+INPUT figures/table2.png
+INPUT figures/table3.png
 INPUT keke.bbl
 INPUT keke.bbl
 OUTPUT keke.nav
