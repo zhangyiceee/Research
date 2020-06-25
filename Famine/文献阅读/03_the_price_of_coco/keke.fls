@@ -330,8 +330,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerinnerthemerounde
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerouterthemeinfolines.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerouterthemeinfolines.sty
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemecrane.sty
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemecrane.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemelily.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemelily.sty
 INPUT keke.aux
 INPUT keke.aux
 OUTPUT keke.aux

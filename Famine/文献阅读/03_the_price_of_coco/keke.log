@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.12.2)  20 JUN 2020 21:03
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.12.2)  22 JUN 2020 14:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1101,7 +1101,7 @@ LaTeX Info: Redefining \cite on input line 694.
 y)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamerouterthemeinfolines.
 sty))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemecrane.sty)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/beamer/beamercolorthemelily.sty)
 
 Package fontspec Info: Could not resolve font "PingFang SC/I" (it probably
 (fontspec)             doesn't exist).
@@ -1122,6 +1122,7 @@ Package fontspec Info: Font family 'PingFangSC(0)' created for font 'PingFang
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.: <->"PingFang
 (fontspec)             SC/BI/OT:script=hani;language=DFLT;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
+
 
 (./keke.aux)
 \openout1 = `keke.aux'.
@@ -1358,7 +1359,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 File: figures/figure1.png Graphic file (type bmp)
 <figures/figure1.png>
 
-Overfull \vbox (12.83669pt too high) detected at line 119
+Overfull \vbox (5.30078pt too high) detected at line 119
  []
 
 [12
@@ -1424,12 +1425,12 @@ Package rerunfilecheck Info: File `keke.out' has not changed.
 (rerunfilecheck)             Checksum: CF7A5CED7FFF105448FDD2A6A1F8297B.
  ) 
 Here is how much of TeX's memory you used:
- 35863 strings out of 492916
- 744984 string characters out of 6133345
- 822226 words of memory out of 5000000
- 39331 multiletter control sequences out of 15000+600000
+ 35828 strings out of 492916
+ 744080 string characters out of 6133345
+ 820073 words of memory out of 5000000
+ 39296 multiletter control sequences out of 15000+600000
  537668 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  70i,15n,77p,806b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on keke.xdv (21 pages, 625324 bytes).
+Output written on keke.xdv (21 pages, 602252 bytes).
