@@ -1,0 +1,35 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{吴愈晓} et~al.(2018){吴愈晓}, {王鹏}, and
+  {杜思佳}]{吴愈晓2018}
+{吴愈晓}, {王鹏}, and {杜思佳}.
+\newblock 变迁中的中国家庭结构与青少年发展.
+\newblock \emph{中国社会科学}, \penalty0 (02):\penalty0 98--120+206--207,
+  2018.
+\newblock ISSN 1002-4921.
+\newblock URL
+  \url{https://kns.cnki.net/kcms/detail/detail.aspx?filename=ZSHK201802005&dbcode=CJFD&dbname=CJFD2018&v=}.
+
+\bibitem[吴愈晓 et~al.(2019)吴愈晓, 王鹏, 杜思佳, and
+  亢晓妮]{吴愈晓2019}
+吴愈晓, 王鹏, 杜思佳, and 亢晓妮.
+\newblock 变迁中的中国家庭结构与青少年发展（英文）.
+\newblock \emph{Social Sciences in China}, 40\penalty0 (04):\penalty0 64--79,
+  2019.
+\newblock ISSN 0252-9203.
+\newblock URL
+  \url{https://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2019&filename=SHEK201904004&uid=WEEvREcwSlJHSldTTEYzU3FBN2wrY0gzK2Jic0NEOGpzd2IybUtnQzJNZz0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&v=MjEwMTQ5RllJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSN3FmWXVSdkZ5cmhWYnpNTmlYT1piRzRIOWpNcTQ=}.
+
+\bibitem[张帆 and 吴愈晓(2020)]{张帆2020}
+张帆 and 吴愈晓.
+\newblock
+  与祖辈同住：当前中国家庭的三代居住安排与青少年的学业表现.
+\newblock \emph{社会}, 40\penalty0 (03):\penalty0 212--240, 2020.
+\newblock ISSN 1004-8804.
+
+\end{thebibliography}

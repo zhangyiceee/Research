@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: GDppt.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Warning--there's a number but no volume in 吴愈晓2018
+You've used 3 entries,
+            2773 wiz_defined-function locations,
+            619 strings with 5703 characters,
+and the built_in function-call counts, 1678 in all, are:
+= -- 163
+> -- 90
+< -- 1
++ -- 30
+- -- 27
+* -- 155
+:= -- 262
+add.period$ -- 14
+call.type$ -- 3
+change.case$ -- 18
+chr.to.int$ -- 3
+cite$ -- 7
+duplicate$ -- 62
+empty$ -- 128
+format.name$ -- 32
+if$ -- 341
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 3
+newline$ -- 28
+num.names$ -- 12
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 46
+stack$ -- 0
+substring$ -- 100
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 33
+warning$ -- 1
+while$ -- 16
+width$ -- 0
+write$ -- 56
+(There was 1 warning)
