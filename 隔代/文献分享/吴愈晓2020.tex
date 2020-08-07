@@ -11,7 +11,7 @@
 \usepackage[UTF8,noindent]{ctexcap}
 \usepackage{natbib}
 \usepackage{hyperref}
-
+\usepackage{color}
 
 \graphicspath{{figures/}}
 
@@ -40,21 +40,16 @@
 \begin{frame}
 \frametitle{Abstract}
 通过分析具有全国代表性的初中学生样本数据，本研究考察了影响当前中国家庭三代共同居住的决定因素、三代居住安排与青少年学业表现之间的关系及其中间机制。首先，家庭社会经济地位较低、母亲在职或单亲家庭的青少年更可能与祖辈同住。其次，代际居住安排会显著影响青少年的学业表现，控制了其他因素之后，三代共同居住（与祖辈同住）家庭的学生的学 业表现要优于两代核心家庭的学生。 第三，与祖辈同住的效应受到家庭社会经济地位和家庭结构的调节，来自较低阶层或非双亲家庭的学生从与祖辈同住中获益更多。最后，与祖辈同住在一定程度上通过加强亲子间的家庭社会资本这一机制作用于学生的学业表现。本文表明，在现代社会，家庭亲属网络仍然对个体的地位获得或社会流动具有十分重要的作用。
-
-
 \end{frame}
-\begin{frame}
-	\frametitle{社会学文献与经济学的一个重要区别}
-	已有理论的应用较多，梳理POAR有点困难
-\end{frame}
-
-
 
 \begin{frame}
 \frametitle{Problem}
 % \includegraphics[scale=0.5]{table1}
 祖辈对于孙辈的影响，以往研究都认为在控制了父辈因素之后，祖辈并不直接作用于孙辈的地位获取（马尔可夫过程）。
-当前的研究中忽略了三代之间的居住安排模式，
+当前的研究中忽略了三代之间的居住安排模式。(非马尔可夫过程)
+
+马尔可夫过程：某一时刻状态转移的概率只依赖于它的前一个状态。举个简单的例子，假如每天的天气是一个状态的话，那个今天是不是晴天只依赖于昨天的天气，而和前天的天气没有任何关系。
+
 \end{frame}
 
 
@@ -77,13 +72,36 @@
 
 \begin{frame}
 	\frametitle{与祖辈同住对学业表现的影响}
+两种代表性观点：
+	\begin{itemize}
+		\item 祖辈与孙辈间的资源传递：祖辈拥有的声望、权力、社会地位以及经济财富会对后代产生庇护。即使祖辈离世这种效应仍然存在。
+		\item 祖辈与孙辈间的互动：频繁的直接互动有助于提高祖辈对孙辈的各种资源传递的效率，进而对孙辈的地位获得和教育发展产生影响。
+	\end{itemize}
+根据以上两种观点，选择与祖辈同住都将有利于青少年的教育发展。
+	异质性：与祖辈同住可能对低阶层家庭的孩子更为重要，孙辈从父辈可以获取的经济资源较少， 因此祖辈提供的经济资源就显得更有意义。
+	\\ 与祖辈同住对于非双亲家庭的孩子的教育发展更为有利。
+\end{frame}
 
+\begin{frame}
+	\frametitle{家庭社会资本--与祖辈同住的间接机制}
+	从社会资本角度看，与两代核心家庭相比，祖辈的加入不仅会增加家庭的社会资本总量，更为重要的是，祖辈的存在可能会通过改善父辈与孙辈之间的社会资本间接地作用于孙辈的学业成就。家庭社会资本可分为(科尔曼，1988)：
+	\begin{itemize}
+		\item 家庭内部社会资本：父母与子女间的有效互动，亲子间承诺、互惠和信任。
+		\item 家庭外部社会资本：父母与社会内其他成员的社会关系以及父母与社会机构的联系。
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{家庭社会资本--与祖辈同住的间接机制}
+与祖辈同住如何影响家庭的社会资本？
+\begin{itemize}
+	\item 父辈和子辈同住扩展为三代同住，家庭社会资本由父子间+祖辈与父辈+祖辈与孙辈，家庭社会资本总量提升
+	\item 现有分工体系下，祖辈承担更多的日常照料，那么父辈可以专注于孙辈的教育，进而有利于父辈与孙辈间社会资本质量的提高。
+\end{itemize}
 \end{frame}
+
+
 
 \begin{frame}
 	\frametitle{数据、变量与研究方法}
@@ -96,7 +114,8 @@
 
 \begin{frame}
 	\frametitle{数据、变量与研究方法：数据}
-	CEPS2014-2015年追踪数据，剔除掉了父母不在家的个案以及部分确实个案，得到样本总数8879个。
+	CEPS2014-2015年追踪数据，剔除掉了父母不在家的个案以及部分确实个案（确保可以测量亲子间的社会互动），得到样本总数8879个。
+	\\ 后文关于与祖辈同住的定义中只要和祖辈同住就定义为1，其他为0，那么这里的样本会缺少很大一部分的隔代同住的家庭。
 \end{frame}
 
 
@@ -107,15 +126,27 @@
 		\item 是否与祖辈同住和家庭结构：“与祖辈同住”则赋值为1，根据学生与父母同住的情况将家庭结构分为：双亲、单亲父亲、单亲母亲家庭。
 		\item 家庭社会经济地位
 		\item 家庭社会资本
-		\item 其他：性别、户口、流动儿童、兄弟姐妹数量等。。。
+			\begin{itemize}
+				\item 家庭内部社会资本：
+					\begin{itemize}
+						\item 亲子互动频率、父母的教育期望、学生的教育期望、亲子教育期望差异和父母对孩子未来的信心
+					\end{itemize}
+				\item 家庭外部的社会资本：
+					\begin{itemize}
+						\item 学生自身的社会资本：学校同辈群体质量、学生的集体融入和人际关系
+						\item 家长社会资本：是否认识孩子朋友的父母、是否参加家长会、是否主动与老师联系
+						
+					\end{itemize}
+			\end{itemize}
+		\item 其他：性别、户口、流动儿童、兄弟姐妹数量等
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{数据、变量与研究方法：方法}
 	\begin{itemize}
-		\item 区县随机效应Logit模型
-		\item 学校固定效应模型：研究与祖辈同住对学业表现的影响及作用机制，为了克服选择行对估计结果的影响，采用稳定逆概率加权（IPTW），感觉有点像匹配。
+		\item 区县随机效应Logit模型（考虑到区域间社会经济文化的差异）探究影响因素
+		\item 学校固定效应模型：研究与祖辈同住对学业表现的影响及作用机制，为了克服选择行对估计结果的影响，采用稳定逆概率加权（IPTW）克服选择性对于估计结果产生的偏误。
 	\end{itemize}
 \end{frame}
 
@@ -124,8 +155,6 @@
 \frametitle{Result：与祖辈同住的影响因素}
 	\centering{\includegraphics[scale=0.5]{table2}}
 \end{frame}
-
-
 
 \begin{frame}
 \frametitle{Result：与祖辈同住的影响因素}
@@ -167,13 +196,20 @@
 \includegraphics[scale=0.32]{table5}
 \end{frame}
 
+\begin{frame}
+	\frametitle{吴愈晓\&感想}
+ 吴愈晓：为什么教育竞争愈演愈烈？串联了他自己的很多研究，其中就包括三代同住 \url{https://www.bilibili.com/video/BV1p5411W78i?from=search&seid=16354117810740553962}
+
+ \begin{itemize}
+		\item 社会学与经济学的不同，尤其在写作上；
+		\item 与中国工业经济类似，“社会”提供早期(最近一期是2019年)文章的dofile，可以复制学习。\url{http://www.society.shu.edu.cn/CN/item/showItemList.do?pager=1&columnId=40}
+\end{itemize}
+
+\end{frame}
+
 
 \begin{frame}
-	\frametitle{几点感想}
-	\begin{itemize}
-		\item 社会学与经济学的不同
-		\item 这个期刊“社会”提供早期文章的dofile，可以复制学习
-	\end{itemize}
+	\includegraphics[scale=0.3]{社会}
 \end{frame}
 %参考文献的案例 \citet{Krueger1999Experimental} \citep{Krueger1999Experimental}  注意两类的不同
 \end{document}

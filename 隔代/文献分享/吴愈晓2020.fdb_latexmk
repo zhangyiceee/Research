@@ -1,12 +1,12 @@
 # Fdb version 3
-["xdvipdfmx"] 1596122395 "吴愈晓2020.xdv" "吴愈晓2020.pdf" "吴愈晓2020" 1596122396
-  "吴愈晓2020.xdv" 1596122395 528916 b4bb7fc358f75e055b11396a51295097 "xelatex"
+["xdvipdfmx"] 1596698879 "吴愈晓2020.xdv" "吴愈晓2020.pdf" "吴愈晓2020" 1596698881
+  "吴愈晓2020.xdv" 1596698879 608512 d0b9cd3a91c82368b882e51ee3b9b2dc "xelatex"
   (generated)
   "吴愈晓2020.pdf"
-["xelatex"] 1596122391 "吴愈晓2020.tex" "吴愈晓2020.xdv" "吴愈晓2020" 1596122396
+["xelatex"] 1596698876 "吴愈晓2020.tex" "吴愈晓2020.xdv" "吴愈晓2020" 1596698881
   "/Library/Fonts/Songti.ttc" 1534542990 66933252 bc432ad7628283e59cc866a2cb6e3437 ""
   "/System/Library/Fonts/PingFang.ttc" 1534542991 80005872 c5152dd6f256595adcf0200e1d4adc10 ""
-  "/dev/null" 1596122395 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1596698880 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -219,15 +219,16 @@
   "figures/table3.png" 1595415386 79747 eec115b82b34b958cf0e58ce94b79caa ""
   "figures/table4.png" 1595415413 121695 0b2ed1093eb9477aaf202c53d8459258 ""
   "figures/table5.png" 1596117029 160990 1378a47cf849c7b2b3100b11073f230c ""
-  "吴愈晓2020.aux" 1596122395 4068 065b0117caa804d0d63cdf65a614e943 "xelatex"
-  "吴愈晓2020.nav" 1596122395 1946 cc1d57bc897673374b837eab8153475a "xelatex"
-  "吴愈晓2020.out" 1596122393 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "吴愈晓2020.tex" 1596122396 7601 b212d65434c8df0115bf5fe98f2223d5 ""
+  "figures/社会.png" 1596266721 543741 b7962bb232c77192da4764a735204530 ""
+  "吴愈晓2020.aux" 1596698879 4410 11f940ff8ea937fb25dcb2f0e7dad3dd "xelatex"
+  "吴愈晓2020.nav" 1596698879 2132 9ecbcfc9f7de68c052dc9846a033acac "xelatex"
+  "吴愈晓2020.out" 1596698878 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "吴愈晓2020.tex" 1596698875 10964 3bf867397a7cfe5e890ce3627aaf2530 ""
   (generated)
-  "吴愈晓2020.out"
-  "吴愈晓2020.nav"
-  "吴愈晓2020.log"
-  "吴愈晓2020.aux"
-  "吴愈晓2020.xdv"
   "吴愈晓2020.toc"
+  "吴愈晓2020.log"
+  "吴愈晓2020.nav"
   "吴愈晓2020.snm"
+  "吴愈晓2020.xdv"
+  "吴愈晓2020.out"
+  "吴愈晓2020.aux"

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.12.2)  30 JUL 2020 23:19
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.12.2)  6 AUG 2020 15:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1355,59 +1355,98 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 
 ] [11
 
+] [12
+
 ]
 File: figures/table2.png Graphic file (type bmp)
 <figures/table2.png>
 
-Overfull \vbox (23.36824pt too high) detected at line 125
+Overfull \vbox (23.36824pt too high) detected at line 157
  []
 
-[12
+[13
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 134.
+LaTeX Font Info:    Try loading font information for U+msa on input line 164.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 134.
+LaTeX Font Info:    Try loading font information for U+msb on input line 164.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 134.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 164.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 134.
- [13
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 164.
+ [14
 
 ]
 File: figures/table3.png Graphic file (type bmp)
 <figures/table3.png>
- [14
+ [15
 
 ]
 File: figures/figure2.png Graphic file (type bmp)
 <figures/figure2.png>
 
-[15
+[16
 
-] [16
+] [17
 
 ]
 File: figures/table4.png Graphic file (type bmp)
 <figures/table4.png>
 
-Overfull \vbox (15.53516pt too high) detected at line 161
+Overfull \vbox (15.53516pt too high) detected at line 191
  []
 
-[17
+[18
 
 ]
 File: figures/table5.png Graphic file (type bmp)
 <figures/table5.png>
- [18
+ [19
 
-] [19
+]
+
+Package fontspec Warning: Font "STFangsong" does not contain requested Script
+(fontspec)                "CJK".
+
+
+Package fontspec Info: Could not resolve font "STFangsong/BI" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/B" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "STFangsong/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'STFangsong(0)' created for font
+(fontspec)             'STFangsong' with options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STFangsong/OT"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+[20
+
+]
+File: figures/社会.png Graphic file (type bmp)
+<figures/社会.png>
+
+Overfull \hbox (17.8529pt too wide) in paragraph at lines 213--213
+[][]  
+ []
+
+[21
 
 ]
 \tf@nav=\write6
@@ -1419,21 +1458,21 @@ File: figures/table5.png Graphic file (type bmp)
 \tf@snm=\write8
 \openout8 = `吴愈晓2020.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 178.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 178.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
  (./吴愈晓2020.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 178.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 178.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 215.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
 Package rerunfilecheck Info: File `吴愈晓2020.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E.
  ) 
 Here is how much of TeX's memory you used:
- 35812 strings out of 492916
- 745695 string characters out of 6133345
- 814344 words of memory out of 5000000
- 39284 multiletter control sequences out of 15000+600000
- 537652 words of font info for 69 fonts, out of 8000000 for 9000
+ 35954 strings out of 492916
+ 751121 string characters out of 6133345
+ 821746 words of memory out of 5000000
+ 39410 multiletter control sequences out of 15000+600000
+ 537716 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 70i,15n,77p,809b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,15n,77p,809b,718s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 吴愈晓2020.xdv (19 pages, 528916 bytes).
+Output written on 吴愈晓2020.xdv (21 pages, 608512 bytes).
