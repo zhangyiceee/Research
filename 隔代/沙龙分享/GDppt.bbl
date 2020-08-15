@@ -1,0 +1,58 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brown(2010)]{brown_marriage_2010}
+Susan~L. Brown.
+\newblock Marriage and {Child} {Well}-{Being}: {Research} and {Policy}
+  {Perspectives}.
+\newblock \emph{Journal of Marriage and Family}, 72\penalty0 (5):\penalty0
+  1059--1077, 2010.
+\newblock URL \url{http://www.jstor.org/stable/40865595}.
+
+\bibitem[Ji et~al.(2020)Ji, Wang, Liu, Xu, and Zheng]{ji_young_2020}
+Yingchun Ji, Huiguang Wang, Yue Liu, Ruonan Xu, and Zhenzhen Zheng.
+\newblock Young {Women}'s {Fertility} {Intentions} and the {Emerging}
+  {Bilateral} {Family} {System} under {China}'s {Two}-{Child} {Family}
+  {Planning} {Policy}.
+\newblock \emph{China Review}, 20\penalty0 (2):\penalty0 113--141, June 2020.
+\newblock ISSN 1015-6607.
+\newblock URL \url{https://muse.jhu.edu/article/757480}.
+\newblock Publisher: The Chinese University of Hong Kong Press.
+
+\bibitem[Mare(2011)]{mare_multigenerational_2011}
+Robert~D. Mare.
+\newblock A {Multigenerational} {View} of {Inequality}.
+\newblock \emph{Demography}, 48\penalty0 (1):\penalty0 1--23, February 2011.
+\newblock ISSN 0070-3370, 1533-7790.
+\newblock \doi{10.1007/s13524-011-0014-7}.
+\newblock URL \url{http://link.springer.com/10.1007/s13524-011-0014-7}.
+
+\bibitem[Zeng and Xie(2014)]{zeng_effects_2014}
+Zhen Zeng and Yu~Xie.
+\newblock The {Effects} of {Grandparents} on {Children}’s {Schooling}:
+  {Evidence} {From} {Rural} {China}.
+\newblock \emph{Demography}, 51\penalty0 (2):\penalty0 599--617, April 2014.
+\newblock ISSN 0070-3370, 1533-7790.
+\newblock \doi{10.1007/s13524-013-0275-4}.
+\newblock URL \url{http://link.springer.com/10.1007/s13524-013-0275-4}.
+
+\bibitem[{吴愈晓} et~al.(2018){吴愈晓}, {王鹏}, and
+  {杜思佳}]{吴愈晓2018}
+{吴愈晓}, {王鹏}, and {杜思佳}.
+\newblock 变迁中的中国家庭结构与青少年发展.
+\newblock \emph{中国社会科学}, \penalty0 (02):\penalty0 98--120+206--207,
+  2018.
+\newblock ISSN 1002-4921.
+
+\bibitem[{张帆} and {吴愈晓}(2020)]{张帆2020}
+{张帆} and {吴愈晓}.
+\newblock
+  与祖辈同住：当前中国家庭的三代居住安排与青少年的学业表现.
+\newblock \emph{社会}, 40\penalty0 (03):\penalty0 212--240, 2020.
+\newblock ISSN 1004-8804.
+
+\end{thebibliography}

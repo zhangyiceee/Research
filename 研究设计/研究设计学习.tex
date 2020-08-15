@@ -1,5 +1,6 @@
-\documentclass{article}
-\usepackage[UTF8,noindent]{ctexcap}
+\documentclass{book}
+\usepackage[UTF8, noindent, heading]{ctex}
+%\usepackage[UTF8,noindent]{ctex}
 
 \title{计量经济学成长之路
 \\[2ex]
@@ -14,14 +15,44 @@
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{natbib}
+\usepackage{amsmath}
+
 \usepackage{url} %需要和\url{}配合使用
 \newpage
 
 \begin{document}
 
 \maketitle
+\chapter{我的思考}
+\section{小喇叭的长期影响}
+一个可能的方面，文革期间广播节目被暂停，1978年11月6日正式开播，节目定位是面向学龄前儿童，因此可以比较在1978年11月前已上学学生和未上学学生的差异，存在的问题是没有相关电台数据，因此是否可以用安慰剂检验进行研究，比如选一个年龄更高的群体，比较着两类群体在这前后差异不大，因此可以归为是节目的影响。
 
-\newpage
+
+\chapter{处理效应}
+\section{处理效应与选择难题}
+我所理解的处理效应也就是我们通常所说的因果效应，首先需要提到的自然是内生性问题。以就业培训为例，通常的办法是直接比较参加就业培训的人群与未参加就业培训人群的未来收入，发现参加就业人的未来收益低于未参加人群，但并不能说这是由于参加就业培训带来的，这里存在的一个典型的问题就是“自选择”(self selection)。可能的原因是收入高的人群并不需要参加培训。
+\par \citet{Rubin1974}提出了“反事实框架”，称为Rubin Csusal Model。 虚拟变量
+$D_{i}=\{0,1\}$表示个体$i$是否参与此项目。$D_{i}$被称为“处理变量”。记个体未来的收入为$y_i$.想知道 $D_i$是否对 $y_i$有因果作用。
+\par 
+\begin{equation}
+	 f(x)=\left\{
+		\begin{aligned}
+		y_i & =y_{1i} & if D_i==1\\
+		y_i & =y_{0i} & if D_i==0
+		\end{aligned}
+		\right.
+\end{equation}
+$y_{0i} $ 表示个体$i$未参加项目的未来收入，而$y_{1i} $ 表示个体$i$参加项目的未来收入。$y_{1i}-y_{0i}$即参加培训的因果效应。但是通常只能观察到
+$y_{1i}  y_{0i} $中的一种。
+\begin{equation}
+	y_i=(1-D_{i})y_{0i}+D_iy_{1i}=y_{0i}+(y_{1i}-y_{0i})D_i
+\end{equation}
+其中$y_{1i}-y_{0i}$为个体$i$参加项目的因果效应。
+
+\par 对内生性问题的一个处理办法是进行随机分组，也就是下一章所讲的随机干预实验。当然，目前大部分学者都是用的是公开数据，那随机分组不满足的情况下，各个准实验方法的目的就在于此。
+
+\chapter{随机干预实验：RCT}
+\chapter{工具变量}
 \section{父母失业对孩子辍学的影响}
 The Effect of Parental Job Loss on Child School Dropout: Evidence from the Occupied Palestinian Territories
 \par 摘要：Journal of Development Economics发表的论文利用巴勒斯坦被占地区样本研究父母工作失业对于孩子辍学的影响\citep{di_maio_2019}。
@@ -31,9 +62,7 @@ The Effect of Parental Job Loss on Child School Dropout: Evidence from the Occup
 识别策略：作者实证研究了父母失业对于学生辍学的影响。对于辍学的定义：若孩子t期上学，t+1期未上学则定义为辍学；同样，若受访者t期在以色列境内就业，t+1期在以色列未被雇佣则定义为失业。并控制孩子、家庭特征、地区固定效应以及时间固定效应，进行OLS估计。在此基础上利用冲突强度（死亡率）作为巴勒斯坦被占地区人口失业的工具变量。如果冲突直接影响到辍学率那么工具变量的相关假定将无法满足，比如冲突造成的学校基础设施的破坏以及去学校的困难程度进而造成辍学，如果这一假设成立，那么冲突的影响将会对被占地区所有学生产生影响。，作者比较了父母在以色列工作与父母在被占地区工作的孩子辍学数据发现，冲突只影响父母在以色列工作孩子的辍学率，进而验证工具变量的有效性； 此外，作者发现被占地区的教育系统坚不可摧，冲突地区的学校入学率反而还较前期有所提升，据此得以论证工具变量的有效性。
 \par 潜在威胁还在于：第一，学生可能是由于抵抗以色列并非因为父母丢失工作辍学；第二，家庭可能因冲突而决定搬迁，高技能工人的家庭搬到死亡人数较少的地区。对于威胁一，作者通过引用文献佐证入学率与以色列国防军实施的军事措施强度间无相关性，排除了将辍学率与冲突强度联系起来的反馈机制；对于威胁二，作者引用巴勒斯坦统计局数据证明，冲突时期的家庭迁徙不多，且迁徙群体中大部分是出于婚姻而进行的。
 \par 在克服内生性问题，并进行一系列稳健型检验（样本扩大、失业定义的变化以及删掉未与以色列接壤的地区样本）后（样本扩大、失业定义的变化以及删掉未与以色列接壤的地区样本）发现的结果表明，父母失业会造成孩子辍学的可能性几率提高9个百分点，异质性方面男生与学业表现较差的学生受父母失业影响较大。
-
-\par 评论：这篇文章的在识别部分写的很清楚，也是我第一篇能看懂的文献
-
+\par 评论：这篇文章的在识别部分写的很清楚，也是我第一次能清楚的明白研究设计的重要性。
 
 \newpage
 \section{饥荒的长期影响}
@@ -46,7 +75,37 @@ The Long Term Consequences of Famine on Survivors: Evidence from a Unique Natura
 \par 文章的分析结果表明，母胎或者幼儿时期经历饥荒对成年后的身高、体重、BMI、受教育程度以及劳动力供给有很大的负面影响。
 
 
+\chapter{固定效应}
 
+\chapter{双重差分}
+
+\chapter{断点回归}
+\section{理论}
+有时处理变量$D_i$完全由连续变量是否超过某个断点所决定。比如，考上大学对工资收入的影响，假设大学分数线未500分。
+\begin{equation}
+	 D_i=\left\{
+		\begin{aligned}
+		1 & if & x_i>=500\\
+		0 & if & x_i<500
+		\end{aligned}
+		\right.
+\end{equation}
+对于考分在500左右的学生(489	、499、500、501)，可以认为他们在各方面都没有系统性差异，尤其能力方面。
+因此可以估计出$x=500$附近的因果效应，称为局部平均处理效应(Local Average Treatment Effcet,LATE)
+\begin{equation}
+	\begin{aligned}
+		LATE & \equiv E(y_{1i}-y_{0i}|x=500)\\
+			 &= E(y_{1i}|x=500)-E(y_{0i}|x=500)\\
+			 &= limits_{500+}E(y_{1i}|x)-limits_{500-}E(y_{0i}|x)
+	\end{aligned}
+\end{equation}
+表明 \\ 
+========================================\\
+========================================\\
+========================================\\
+========================================\\
+========================================\\
+\chapter{合成控制} % (fold)
 %\newpage
 %\section{待定}
 %
@@ -59,10 +118,7 @@ The Long Term Consequences of Famine on Survivors: Evidence from a Unique Natura
 %\newpage
 %\section{待定}
 
-
-
-\newpage
-\section{参考文献}
+\chapter{参考文献}
 引用用文献的案例在此处\citet{di_maio_2019}
 \\ \citep{di_maio_2019}  注意两类的不同
 \bibliographystyle{plainnat}
