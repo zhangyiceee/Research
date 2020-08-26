@@ -1,28 +1,26 @@
 # Fdb version 3
-["bibtex GDppt"] 1597464734 "GDppt.aux" "GDppt.bbl" "GDppt" 1597464739
-  "/usr/local/texlive/2019/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "GDppt.aux" 1597464738 4896 9a691c6a4ae2a30bbe4d80ff8bc4ea89 "xelatex"
-  "references.bib" 1597464709 7364 1d3469101fd8e7a441a341ecf095298e ""
+["bibtex GDppt"] 1597975595 "GDppt.aux" "GDppt.bbl" "GDppt" 1597976319
+  "/usr/local/texlive/2019/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
+  "GDppt.aux" 1597975599 8341 33f358bc1a29223a6cda910648f7d225 "xelatex"
+  "references.bib" 1597824703 48630 c3ec50e2488a1f6e2ec5b5e89a52ce67 ""
   (generated)
-  "GDppt.bbl"
   "GDppt.blg"
-["xdvipdfmx"] 1597464738 "GDppt.xdv" "GDppt.pdf" "GDppt" 1597464739
-  "GDppt.xdv" 1597464738 553476 010c416ecacb516922a7f5bad19f57a2 "xelatex"
+  "GDppt.bbl"
+["xdvipdfmx"] 1597975600 "GDppt.xdv" "GDppt.pdf" "GDppt" 1597976319
+  "GDppt.xdv" 1597975599 802404 868c01fe1286faa936a3de2ac51e1b6d "xelatex"
   (generated)
   "GDppt.pdf"
-["xelatex"] 1597464734 "GDppt.tex" "GDppt.xdv" "GDppt" 1597464739
+["xelatex"] 1597975595 "GDppt.tex" "GDppt.xdv" "GDppt" 1597976319
   "/Library/Fonts/Songti.ttc" 1534542990 66933252 bc432ad7628283e59cc866a2cb6e3437 ""
   "/System/Library/Fonts/PingFang.ttc" 1534542991 80005872 c5152dd6f256595adcf0200e1d4adc10 ""
-  "/dev/null" 1597464738 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1597976317 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
-  "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
-  "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
@@ -223,16 +221,16 @@
   "/usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf" 1557092114 35484 cb1661360667bf4db662a8895053b554 ""
   "/usr/local/texlive/2019/texmf-var/web2c/xetex/xelatex.fmt" 1575254624 3751082 9d90f98373be2c712eda7eabd72485ce ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "GDppt.aux" 1597464738 4896 9a691c6a4ae2a30bbe4d80ff8bc4ea89 "xelatex"
-  "GDppt.bbl" 1597464734 2443 019b9ff5c8e05998f14b2c01577603a0 "bibtex GDppt"
-  "GDppt.nav" 1597464738 1918 6b9026ccd95d381d45115c8bc8e4360e "xelatex"
-  "GDppt.out" 1597464738 75 cf7a5ced7fff105448fdd2a6a1f8297b "xelatex"
-  "GDppt.tex" 1597464724 16160 88dde357bfaa742451c9d62eb9596031 ""
+  "GDppt.aux" 1597975599 8341 33f358bc1a29223a6cda910648f7d225 "xelatex"
+  "GDppt.bbl" 1597975595 7359 43d56ebe2bc39f373102a3c53e0c68ff "bibtex GDppt"
+  "GDppt.nav" 1597975599 2568 6f8155eb919418c0ba33e79d5114e2fe "xelatex"
+  "GDppt.out" 1597975599 75 cf7a5ced7fff105448fdd2a6a1f8297b "xelatex"
+  "GDppt.tex" 1597976317 27177 f7ec9344a6b2f2cb4a222205f9042274 ""
   (generated)
-  "GDppt.xdv"
+  "GDppt.log"
   "GDppt.nav"
+  "GDppt.xdv"
+  "GDppt.toc"
+  "GDppt.out"
   "GDppt.aux"
   "GDppt.snm"
-  "GDppt.out"
-  "GDppt.toc"
-  "GDppt.log"

@@ -41,10 +41,12 @@
 %开始你的边际贡献
 
 
+
 \begin{frame}
 \frametitle{摘要}
 探究影响青少年发展的因素具有现实意义，文章从家庭结构的视角出发，利用中国教育追踪调查数据，运用多元线性回归模型分析了不同家庭结构对于学生认知与非认知能力的影响。结果表明，在控制了学生个体、家庭特征及学校固定效应后，三代同住家庭对于青少年认知与非认知均有显著的促进作用，隔代同住家庭对于青少年非认知能力有消极影响，但对其认知能力无显著影响。
 \end{frame}
+
 
 \begin{frame}
 	\frametitle{背景}
@@ -179,7 +181,7 @@ CEPS的认知测试主要测量学生的逻辑思维与问题解决能力，不�
 	Y_{ij}=\beta_1Three_{ij}+\beta_2Inter_{ij}+Child_{ij}+Parent_{ij}+School_j+\varepsilon_{ij}
 \end{equation}
 \par $Y_{ij}$ 代表第$j$个学校第i个学生认知或非认知能力;$Three_{ij}$表示第$j$个学校第$i$个学生是否生活在三代同住家庭；$Inter_{ij}$表示第$j$个学校第$i$个学生是否只与祖辈同住；
-\par $Child_{ij}$为学生个体层面的控制变量，包括性别、年龄、民族、是否为独生子女、户口状况、是否上过学前班以及是否为流动儿童；
+\par $Child_{ij}$为学生个体层面的控制变量，包括性别、年龄、民族、是否为独生子女、户口状况、是否上过学前班、是否为流动儿童以及是否住校；
 \par $Parent_{ij}$为第$j$个学校第$i$个学生父母的最高受教育程度以及家庭经济条件的虚拟变量，为排除未被观测到的学校特征对学业表现的影响，加入学校层面的固定效应$School_j$进行估计。 
 \end{frame}
 
@@ -192,7 +194,7 @@ CEPS的认知测试主要测量学生的逻辑思维与问题解决能力，不�
 \label{sum}
 \resizebox{160pt}{100pt}{
 \begin{tabular}{lccccc}
-\hline
+\hline \hline
  变量名        &  观测值   &  均值      &  标准差   &  最小值    &  最大值   \\
 \hline
 亲代同住       &  14208 &  0.679   &  0.467 &  0      &  1     \\ 三代同住       &  14208 &  0.24    &  0.427 &  0      &  1     \\ 隔代同住       &  14208 &  0.0812  &  0.273 &  0      &  1     \\
@@ -225,7 +227,7 @@ CEPS的认知测试主要测量学生的逻辑思维与问题解决能力，不�
 \label{ttest}
 \resizebox{270pt}{110pt}{
 	\begin{tabular}{@{\extracolsep{5pt}}lccccccccc}
-\\[-1.8ex] \hline \\[-1.8ex]
+\\[-1.8ex] \hline \hline \\[-1.8ex]
   & \multicolumn{2}{c}{(1)}  & \multicolumn{2}{c}{(2)}  & \multicolumn{2}{c}{(3)}  & \multicolumn{3}{c}{T-test}  \\
  & \multicolumn{2}{c}{亲代同住}  & \multicolumn{2}{c}{三代同住}  & \multicolumn{2}{c}{隔代同住}  & \multicolumn{3}{c}{Difference}  \\
     Variable & N & Mean/SE  & N & Mean/SE  & N & Mean/SE   & (1)-(2)  & (1)-(3)  & (2)-(3)  \\ \hline \\[-1.8ex] 
@@ -261,7 +263,7 @@ CEPS的认知测试主要测量学生的逻辑思维与问题解决能力，不�
 \label{cog1}
 \resizebox{140pt}{110pt}{
 \begin{tabular}{lccc}
-\hline
+\hline \hline
 		    & \multicolumn{3}{c}{认知能力}  \\
 
                & (1)        & (2)        & (3)       \\
@@ -319,7 +321,7 @@ Observations & 14,208     & 14,208     & 14,208   \\
 \resizebox{270pt}{110pt}{
 
 \begin{tabular}{lccccccccc}
-\hline
+\hline \hline
 	    & \multicolumn{3}{c}{情绪稳定性}    & \multicolumn{3}{c}{宜人性}  & \multicolumn{3}{c}{尽责性}      \\
            & (1)        & (2)        & (3)        & (4)        & (5)        & (6)       & (7)        & (8)        & (9)        \\
 \hline
@@ -368,21 +370,21 @@ Observations & 14,208     & 14,208     & 14,208     & 14,208     & 14,208     & 
 \begin{frame}
 	\frametitle{结论}
 可以看出三代同住对于青少年认知能力有显著的促进作用，隔代同住对于青少年认知能力没有显著影响
-\par 但从非认知能力来看，三代同住的家庭仍旧显示出对于青少年的正向影响，但是隔代同住对于青少年的情绪稳定性和宜人性有显著的负面影响。
+\par 从非认知能力来看，三代同住的家庭仍旧显示出对于青少年的正向影响，但是隔代同住对于青少年的情绪稳定性有显著的负面影响。
 
 \end{frame}
 
 
 
-\begin{frame}
-	\frametitle{机制思考}
-	\begin{itemize}
-		\item 家庭经济条件:祖辈经济资源+父辈的经济资源
-		\item 父母社会化:祖辈承担抚养的职能，父辈有更多时间关注孙辈的学习
-		\item 家庭不稳定:父母离异等
-	\end{itemize}
-	从父母社会化角度出发，比较三类家庭中父母对孩子学习和心理健康的关注程度
-\end{frame}
+%\begin{frame}
+%	\frametitle{机制思考}
+%	\begin{itemize}
+%		\item 家庭经济条件:祖辈经济资源+父辈的经济资源
+%		\item 父母社会化:祖辈承担抚养的职能，父辈有更多时间关注孙辈的学习
+%		\item 家庭不稳定:父母离异等
+%	\end{itemize}
+%	从父母社会化角度出发，比较三类家庭中父母对孩子学习和心理健康的关注程度
+%\end{frame}
 
 
 
