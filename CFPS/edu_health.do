@@ -26,6 +26,14 @@
 	keep pid 
 
 
+	tab1 cfps2018eduy age ,m
+	egen average=mean(cfps2018eduy), by(age)
+	
+	scatter   average  age || qfit   average age
+	gen d =age-45
+rd  cfps2018eduy d
+
+
 	use "CFPS2018/cfps2018childproxy.dta",clear
 
 *2018年儿童数据库性别、出生年、民族 出生体重 现在的体重
@@ -178,11 +186,40 @@
 
 
 
+
+
+
 *===================合并各个年份的成人数据库=============*
 *===================合并各个年份的成人数据库=============*
 *===================合并各个年份的成人数据库=============*
-*目的是：构造成年人数据库，出生地出生年月 和 最高受教育程度
+/*目的是：构造成年人数据库，出生地出生年月 和 最高受教育程度 主要是母亲和父亲的特征
+出生地
+最高受教育程度
+民族
+体重
+身高
+是否吸烟（吸烟时间）：孩子出生前母亲是否吸烟
+12居住地与出生地是否相同？如果不同，作为人口迁移对象，删掉做稳健性检验
+出生时家庭经济条件（可能难度较高）
+*/
+
+
 	use "CFPS2018/cfps2018person_201911.dta",clear
-	rename 
+	keep pid ibirthy gender minzu birthp a12p a12hk qa001y qa001m qa001b age ibirthy_update qa401 qa401a_code qa601 qa602 cfps2018edu cfps2018eduy
+br
+
+
+
+
+
+
+
+*父母最高受教育程度要发生在孩子出生之前
+
+
+
+
+
+
 
 
