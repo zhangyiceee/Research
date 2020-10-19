@@ -18,6 +18,25 @@
 	global cleandir "/Users/zhangyi/Desktop/CFPS/教育健康/cleandata"
 	global outdir "/Users/zhangyi/Desktop/CFPS/教育健康/output"
 	global workingdir "/Users/zhangyi/Desktop/CFPS/教育健康/working"
+*使用2010年数据粗看结果
+	use "CFPS2010/cfps2010child_201906.dta",clear  
+	keep if wa102 >=1 & wa102<=14
+
+	tab meduc,m
+	label list meduc
+	gen mo_edu=.
+	replace mo_edu=0 if meduc ==1
+	replace mo_edu=6 if meduc ==2
+	replace mo_edu=9 if meduc ==3
+	replace mo_edu=12 if meduc ==4
+	replace mo_edu=15 if meduc ==5
+	replace mo_edu=16 if meduc ==6
+	replace mo_edu=19 if meduc ==7
+	replace mo_edu=19 if meduc ==8
+	reg wa102 mo_edu
+
+	use "CFPS2010/cfps2010adult_201906.dta",clear  
+
 
 *2018年数据
 *合并多期数据，保证父母出生地的信息完全准确 受教育程度
@@ -25,13 +44,6 @@
 	tab age,m
 	keep pid 
 
-
-	tab1 cfps2018eduy age ,m
-	egen average=mean(cfps2018eduy), by(age)
-	
-	scatter   average  age || qfit   average age
-	gen d =age-45
-rd  cfps2018eduy d
 
 
 	use "CFPS2018/cfps2018childproxy.dta",clear
@@ -174,6 +186,7 @@ rd  cfps2018eduy d
 
 
 
+
 	*出生地
 
 
@@ -215,8 +228,6 @@ br
 
 
 *父母最高受教育程度要发生在孩子出生之前
-
-
 
 
 
