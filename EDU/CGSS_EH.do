@@ -345,68 +345,15 @@
 	tab time1,m
 	keep if edu_year >=12 & edu_year !=.
 	
-	gen month=a3a+ a3b
-	gen month1=time1/30
-	egen edu_ave=mean(edu_year),by(month)
+	h binscatter
+	binscatter edu_year time1  if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
+	binscatter health time1 if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
 	
+	h cmogram 
+	cmogram edu_year time1  if time1>-2000 &time1< 2000 , ///
+		scatter cut(0) lineat(0) lfit ci(95) histopts(bin(25))
 
-	twoway (scatter edu_ave month1 ,xline(0)) ///
-	(qfit  edu_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)) ///
-	(qfit  edu_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)) ///
-
-	egen male_ave=mean(male),by(month)
-	twoway (scatter male_ave month1 ,xline(0)) ///
-	(lfit  male_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)) ///
-	(lfit  male_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)) 
-
-	egen marry_ave=mean(marry),by(month)
-	twoway (scatter marry_ave month1 ,xline(0)) ///
-	(lfit  marry_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)) ///
-	(lfit  marry_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)) 
-
-	egen hanzu_ave=mean(hanzu),by(month)
-	twoway (scatter hanzu_ave month1 ,xline(0)) ///
-	(lfit  hanzu_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)) ///
-	(lfit  hanzu_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)) 
-
-	egen health_ave=mean(health),by(month)
-	twoway (scatter health_ave month1 ,xline(0)) ///
-	(lfit  health_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)) ///
-	(lfit  health_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)) 
-
-	twoway (scatter health_ave month1  ,xline(0)) ///
-	(qfit  health_ave month1 if  birth_day > d(01sep1971) & birth_day <d(01sep1981)  ) ///
-	(qfit  health_ave month1 if  birth_day > d(01sep1981) & birth_day <d(01sep1991)  ) 
-
-	gen t=.
-	replace t=1 if time1>0
-	replace t=0 if time1<0
-	label var t "是否接受干预"
-
-	
-	rdbwselect health_ave month1
-	rdbwselect edu_ave month1
-	rdplot health_ave month1 ,c(0) lowerend(-121.433)  upperend(121.433 )
-	rdplot edu_ave month1 ,c(0) lowerend(-121.433)  upperend(121.433 )
-	rdplot edu_ave month1 ,c(0)
-
-
-	rdplot male_ave month1 ,c(0)
-	rdplot edu_ave month1 ,c(0)
-
-	h ivreg2
-	ivregress 2sls health urban male fa_edu_h mo_edu_h hanzu marry (edu_year =t ),r
-	ivreg2  health urban male fa_edu_h mo_edu_h hanzu marry (edu_year =t ),r
-	ivreg2  health urban male fa_edu_h mo_edu_h hanzu marry (edu_year =t ) if  birth_day > d(01sep19) & birth_day <d(01sep1982)   ,r
-
-
-
-
-
-
-
-
-
-
+	cmogram health time1  if time1>-2000 &time1< 2000 , ///
+		scatter cut(0) lineat(0) lfit ci(95) histopts(bin(25))
 
 
