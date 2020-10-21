@@ -12,8 +12,8 @@
 	set scrollbufsize 2048000
 	capture log close 
 	
-
-
+	
+	
 	cd "/Users/zhangyi/Documents/数据集/CFPS/real_cfps"
 	global cleandir "/Users/zhangyi/Desktop/CFPS/cleandata"
 	global outdir "/Users/zhangyi/Desktop/CFPS/output"
