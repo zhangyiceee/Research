@@ -7,12 +7,6 @@
 **Last Modified: 2020
 *============================================================*
 
-/*
-  ___  ____  ____  ____  ____ 
- /__    /   ____/   /   ____/
-___/   /   /___/   /   /___/ 
-*/
-
 	capture	clear
 	capture log close
 	set	more off
@@ -157,10 +151,29 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	gen siblings =b0201+ b0202+ b0203+ b0204
 	replace siblings =. if b0201==. & b0202==. & b0203==. & b0204==.
 	tab siblings,m
+*父母关系
+	tab1 b1001-b1003,m
+	label list  LABL 
+	gen problem_family=0
+	replace problem_family=1 if b1001==2 &b1002==2 &b1003==1
+	replace problem_family=. if b1003==. |b1002==. |b1001==.
+	label var problem_family "问题家庭"
+	tab problem_family,m
 
-	merge 1:1 ids using "2015年/cepsw2studentCN.dta"
-	keep if  _merge==3
-	tab clsids,m
+*总人数
+	egen total = count(clsids),by(clsids)
+	label var total "班级总人数"
+	bro  clsids total
+	egen pro_total = count(problem_family),by(clsids)
+	label var pro_total "问题家庭数量"
+	gen ratio =pro_total/total
+	label var ratio "问题家庭比例"
 
+	tab ratio,m
+
+	areg stdchn ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
+	areg stdmat ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
+	areg stdeng ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
+	areg cog3pl ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
 
 
