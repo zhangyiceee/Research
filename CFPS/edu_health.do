@@ -18,49 +18,14 @@
 	global cleandir "/Users/zhangyi/Desktop/CFPS/教育健康/cleandata"
 	global outdir "/Users/zhangyi/Desktop/CFPS/教育健康/output"
 	global workingdir "/Users/zhangyi/Desktop/CFPS/教育健康/working"
-*使用2010年数据粗看结果
-	use "CFPS2010/cfps2010child_201906.dta",clear  
-	keep if wa102 >=1 & wa102<=14
-
-	tab meduc,m
-	label list meduc
-	gen mo_edu=.
-	replace mo_edu=0 if meduc ==1
-	replace mo_edu=6 if meduc ==2
-	replace mo_edu=9 if meduc ==3
-	replace mo_edu=12 if meduc ==4
-	replace mo_edu=15 if meduc ==5
-	replace mo_edu=16 if meduc ==6
-	replace mo_edu=19 if meduc ==7
-	replace mo_edu=19 if meduc ==8
-	reg wa102 mo_edu
-
-	use "CFPS2010/cfps2010adult_201906.dta",clear  
-
-
-*2018年数据
-*合并多期数据，保证父母出生地的信息完全准确 受教育程度
-	use "CFPS2018/cfps2018person_201911.dta",clear  
-	tab age,m
-	keep pid 
 
 
 
-	use "CFPS2018/cfps2018childproxy.dta",clear
-
-*2018年儿童数据库性别、出生年、民族 出生体重 现在的体重
-	use "CFPS2018/cfps2018childproxy.dta",clear
-
-	keep pid gender wa701code  birthw wa101 wa104 wa103 bmi ibirthy_update
-	foreach v of varlist gender wa701code  birthw wa101 wa104 wa103 bmi ibirthy_update{
-		rename `v' `v'_18
-	}
-
-	save "$workingdir/cfps2018_child.dta",replace 
 
 *2016年儿童数据库
 	use "CFPS2016/cfps2016child_201906.dta",clear
-	keep pid cfps_birthy cfps_gender pa101 pa701code wa103 wa104
+
+	keep pid cfps_birthy cfps_gender pa101 pa701code wa103 wa104 pid_m
 	foreach v of varlist cfps_birthy cfps_gender pa101 pa701code wa103 wa104{
 		rename `v' `v'_16 
 	}
@@ -68,24 +33,23 @@
 
 *2014年儿童数据库
 	use "CFPS2014/cfps2014child.dta",clear
-	keep pid cfps_birthy cfps_gender wa102 wa103 wa104	wa6code
+	keep pid cfps_birthy cfps_gender wa102 wa103 wa104	wa6code pid_m
 	foreach v of varlist cfps_birthy cfps_gender wa102 wa103 wa104 wa6code {
 	rename `v' `v'_14
 	}
 	save "$workingdir/cfps2014_child.dta",replace 
 *2012年儿童数据库
 	use "CFPS2012/cfps2012child_201906.dta",clear
-	keep pid gender2 wa102 cfps_minzu wa103 wa104 cfps2012_birthy_best
+	keep pid gender2 wa102 cfps_minzu wa103 wa104 cfps2012_birthy_best pid_m
 	foreach v of varlist gender2 wa102 cfps_minzu wa103 wa104 cfps2012_birthy_best{
 		rename `v' `v'_12
 	}
 	save "$workingdir/cfps2012_child.dta",replace 
 
 
-
 *2010年儿童数据库
 	use "CFPS2010/cfps2010child_201906.dta",clear
-	keep pid wa1y wa1m wa102 wa103 wa104 gender wa6code
+	keep pid wa1y wa1m wa102 wa103 wa104 gender wa6code pid_m
 	foreach v of varlist wa1y wa1m wa102 wa103 wa104 gender wa6code {
 		rename `v' `v'_10
 	}
@@ -93,8 +57,8 @@
 	save "$workingdir/cfps2010_child.dta",replace 
 
 *合并各个年份的数据
-	use "$workingdir/cfps2018_child.dta",clear
-	foreach x of numlist 6 4 2 0 {
+	use "$workingdir/cfps2016_child.dta",clear
+	foreach x of numlist  4 2 0 {
 		merge 1:1 pid using "$workingdir/cfps201`x'_child.dta"
 		rename _merge merge`x'
 	}
@@ -108,8 +72,6 @@
 *2018年性别编码是：1男 5女
 *2016、14、12、10年性别编码是：1男 0女
 	gen male =.
-	replace male = 1 if gender_18==1
-	replace male = 0 if gender_18==5
 	foreach x of varlist gender_16 gender_14  gender_12 gender_10 {
 		replace male =1 if `x'==1
 		replace male =0 if `x'==0
@@ -119,7 +81,6 @@
 	label var male "男性=1 女性=0"
 
 *出生年月
-	clonevar birth_y18 =ibirthy_update_18
 	clonevar birth_y16 =cfps_birthy_16
 	clonevar birth_y14 =cfps_birthy_14
 	clonevar birth_y12 =cfps2012_birthy_best
@@ -133,14 +94,14 @@
 	tab birth_y,m
 
 *出生体重
-	clonevar bw_18 = wa101_18 if wa101_18>0 
+
 	clonevar bw_16 = pa101_16 if pa101_16>0 
 	clonevar bw_14 = wa102_14 if wa102_14>0 
 	clonevar bw_12 = wa102_12 if wa102_12>0 
 	clonevar bw_10 = wa102_10 if wa102_10>0 
 	tab1 bw*,m
 	bro bw*
-	label var bw_18 "出生体重18年"
+
 	label var bw_16 "出生体重16年"
 	label var bw_14 "出生体重14年"
 	label var bw_12 "出生体重12年"
@@ -154,83 +115,90 @@
 	tab birth_weight,m
 	sort birth_weight
 	gen weight_data=.
-	foreach x of numlist 18 16 14 12 10 {
+	foreach x of numlist  16 14 12 10 {
 		replace weight_data=`x' if bw_`x' >0
 	}
 	label var weight_data  "出生体重数据来源"
 	bro bw* birth_weight weight_data
 
 *民族
-	bro wa701code pa701code_16 wa6code_14 cfps_minzu_12 wa6code_10
-	clonevar newmz_18 = wa701code if wa701code >0
+	bro  pa701code_16 wa6code_14 cfps_minzu_12 wa6code_10
 	clonevar newmz_16 = pa701code_16 if pa701code_16 >0
 	clonevar newmz_14 = wa6code_14 if wa6code_14 >0
 	clonevar newmz_10 = wa6code_10 if wa6code_10 >0
 
 	gen minzu =0
-	replace minzu=1 if newmz_18==1 |newmz_16==1 |newmz_14==1 | newmz_10==1
-	replace minzu=. if newmz_18==. &newmz_16==. &newmz_14==. & newmz_10==.
+	replace minzu=1 if newmz_16==1 |newmz_14==1 | newmz_10==1
+	replace minzu=. if newmz_16==. &newmz_14==. & newmz_10==.
 	bro newmz* minzu
+
+*把孩子的出生年月确定下来
 	save  "$workingdir/cfps_child_all.dta",replace 
 
-*===================合并各个年份的家庭关系库=============*
-*===================合并各个年份的家庭关系库=============*
-*===================合并各个年份的家庭关系库=============*
-	use "CFPS2018/cfps2018famconf_202008.dta" , clear  
+
+	use  "$workingdir/cfps_child_all.dta",clear 
+	keep  pid birth_weight weight_data minzu male
+	merge 1:1 pid using "CFPS2016/cfps2016famconf_201804.dta"
+	keep if _merge==3
+	keep pid pid_m pid_f male minzu tb1y_a_p tb1m_a_p birth_weight weight_data tb1y_a_m tb1m_a_m tb4_a16_m
+	rename tb1y_a_m b_m_y
+	rename tb1m_a_m b_m_m
+	rename tb4_a16_m mo_eu
+	
+	keep if b_m_y!=. & birth_weight!=. & mo_eu>0 
+
+	gen d=1981 
+	gen t=b_m_y-1981
+	tab t,m
+
+	tab mo_eu,m
+	label list tb4_a16_m
+	gen mo_eu_year=.
+	replace mo_eu_year =0 if mo_eu==1
+	replace mo_eu_year =6 if mo_eu==2
+	replace mo_eu_year =9 if mo_eu==3
+	replace mo_eu_year =12 if mo_eu==4
+	replace mo_eu_year =15 if mo_eu==5
+	replace mo_eu_year =16 if mo_eu==6
+	replace mo_eu_year =19 if mo_eu==7
+	replace mo_eu_year =22 if mo_eu==8
+	tab mo_eu_year,m
+
+	*2500克至4000克
+	gen low=0
+	replace low=1 if birth_weight <5
+	gen high=0 
+	replace high=1 if birth_weight >8
+	tab1 high low
+
+	keep if mo_eu_year>=12
+	reg birth_weight mo_eu_year 
+	ivreg2 birth_weight male  (mo_eu_year= t) if t<=8 & t>=-8
+	ivreg2 low male  (mo_eu_year= t) if t<=8 & t>=-8
+
+
+
+	save "$workingdir/family_guanxi.dta",replace
+
+
+*合并10-16年成人数据库
+	*母亲的信息		
+	use "CFPS2010/cfps2010adult_201906.dta",clear
+	keep pid  qa1y_best qa1m qc1 male 
+
+	rename qa1y_best b_y_10
+	rename qa1m b_m_10
+	rename qc1 edu_10
+	save "$workingdir/adult10.dta",replace
+
+
+	use "CFPS2012/cfps2012adult_201906.dta",clear
+	keep pid cfps2011_latest_edu 
+	rename cfps2011_latest_edu edu_12
+	save "$workingdir/adult12.dta",replace
+	
+
+	use "CFPS2014/cfps2014adult.dta",clear
 	keep pid 
-
-	*出生年月
-	gen birth_year18=.
-	replace birth_year18 =
-
-
-
-
-
-	*出生地
-
-
-
-
-	*最高受教育程度
-
-
-
-
-
-
-
-
-
-*===================合并各个年份的成人数据库=============*
-*===================合并各个年份的成人数据库=============*
-*===================合并各个年份的成人数据库=============*
-/*目的是：构造成年人数据库，出生地出生年月 和 最高受教育程度 主要是母亲和父亲的特征
-出生地
-最高受教育程度
-民族
-体重
-身高
-是否吸烟（吸烟时间）：孩子出生前母亲是否吸烟
-12居住地与出生地是否相同？如果不同，作为人口迁移对象，删掉做稳健性检验
-出生时家庭经济条件（可能难度较高）
-*/
-
-
-	use "CFPS2018/cfps2018person_201911.dta",clear
-	keep pid ibirthy gender minzu birthp a12p a12hk qa001y qa001m qa001b age ibirthy_update qa401 qa401a_code qa601 qa602 cfps2018edu cfps2018eduy
-br
-
-
-
-
-
-
-
-*父母最高受教育程度要发生在孩子出生之前
-
-
-
-
 
 
