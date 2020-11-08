@@ -59,18 +59,24 @@ To Do:
 	replace pid_m=. if pid_m<0
 	tostring  fid code_a_m  pid_m ,replace  force
 	replace pid_m=fid+code_a_m if pid_m =="."
+	rename pid pid_child
+	rename pid_m pid
+	destring pid,replace force
 
-
-	bro fid code_a_m  pid_m
+	bro fid code_a_m  
 	label list pid_m
 	replace pid_f=. if pid_f<0
 	tostring  code_a_f  pid_f ,replace  force
 	replace pid_f=fid + code_a_f if pid_f =="."
 
+	keep pid pid_child pid_f  birth_year birth_month male birth_place birth_weight
+	save "$workingdir/child_10.dta",replace 
 
 
 
 *成人调用母亲数据
+	use "CFPS2010/cfps2010adult_201906.dta",clear
+
 	*出生年月
 	tab1 qa1y_best qa1m,m
 	drop if qa1m <0 //删掉月份缺失的样本
@@ -96,6 +102,10 @@ To Do:
 	format %td birthday_1
 	rename birthday_1 birth_day
 	label var birth_day "出生日期"
+	tab1 qc1 birth_day,m
+	keep pid birth_day
+*母亲受教育程度
+
 	tab qc1,m
 
 
@@ -103,8 +113,16 @@ To Do:
 
 
 
+	merge 1:m pid using  "$workingdir/child_10.dta"
+	keep if _merge==3
 
+	tab birth_weight,m
 
+	tab birth_day if birth_day>d(01jan1970) & birth_day<d(01jan1990) 
+
+	gen t=1 if birth_day>d(01jan1970) & birth_day<d(01jan1981) 
+	replace t=0 if birth_day<d(01jan1990)   & birth_day>=d(01jan1981)
+	label var t "干预状态"
 
 
 
