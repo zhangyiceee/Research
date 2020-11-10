@@ -5,22 +5,16 @@
 %**Last Modified: 2020
 %*============================================================*
 
-%!TEX program = xelatex
-
 \documentclass{beamer}
-\usepackage[UTF8, noindent, heading]{ctex}
+\usepackage[UTF8,noindent]{ctexcap}
 \usepackage{natbib}
 \usepackage{hyperref}
 \usepackage{multirow} %多行合并为1行
-
 
 \graphicspath{{figures/}}
 %\renewcommand\tablename{表}
 \setbeamertemplate{caption}[numbered]
 
-%设置首行缩进
-\usepackage{indentfirst}
-\setlength{\parindent}{2em} %缩进
 
 
 \usetheme{Madrid}
@@ -47,15 +41,15 @@
 探究影响青少年发展的因素具有现实意义，文章从家庭结构的视角出发，利用中国教育追踪调查数据，运用多元线性回归模型分析了不同家庭结构对于学生认知与非认知能力的影响。结果表明，在控制了学生个体、家庭特征及学校固定效应后，三代同住家庭对于青少年认知与非认知均有显著的促进作用，隔代同住家庭对于青少年非认知能力有消极影响，但对其认知能力无显著影响。
 \end{frame}
 
-
 \begin{frame}
 	\frametitle{背景}
 	改革开放以来，我国三代家庭、隔代家庭的比例呈上升趋势\citep{wang_2013}。
-		\begin{itemize}
-		\item 在计划经济时代，单位提供个体从出生到坟墓的福利，支持劳动者的家务、照料等社会再生产过程，极大缓解家庭的困难和女性的工作--家庭冲突\citep{ji_young_2020}。
-		\item 随着我国从计划经济转向市场经济，原来由单位承担的社会福利体系逐渐市场化和私人化。
-		\item 而在市场化过程中，我国并未建立起完善的社会保障制度和家务劳动市场\citep{张帆2020}，因此对于大多数家庭而言，寻求祖辈照顾孙辈成为理性选择。 
-	\end{itemize}
+\begin{itemize}
+\item 在计划经济时代，单位提供个体从出生到坟墓的福利，支持劳动者的家务、照料等社会再生产过程，极大缓解家庭的困难和女性的工作--家庭冲突\citep{ji_young_2020}。
+\item 随着我国从计划经济转向市场经济，原来由单位承担的社会福利体系逐渐市场化和私人化。
+\item 而在市场化过程中，我国并未建立起完善的社会保障制度和家务劳动市场\citep{张帆2020}，因此对于大多数家庭而言，寻求祖辈照顾孙辈成为理性选择。 
+\end{itemize}
+
 \end{frame}
 
 
@@ -65,20 +59,8 @@
 \par 1966年《科尔曼报告》发布后，教育领域的学者们将关注点从学校资源转向家庭方面。在家庭领域的相关研究中，很少有学者关注到祖辈对于青少年发展的影响，在控制了父辈的因素后，祖辈不会对孙辈产生影响(马尔可夫过程)。近年来，学者们从马尔可夫过程转向了非马尔可夫过程，来研究祖辈对孙辈的直接影响\citep{mare_multigenerational_2011}。
 
 \end{frame}
-%其他办法
 
 
-
-%\begin{frame}
-%	\frametitle{现有研究观点} %感觉这块用处不大，或者位置不对。
-%Children raised in two-biological-parent families tend to fare better %academically than children raised in any other family form\citep{brown_marriage_2010}许多研究都表明在双亲家庭在学业上都比其他类型的居住模式好
-%\par 家庭结构在是那个方面有影响（可以作为中间变量，来做机制检验）
-%\begin{itemize}
-%	\item 家庭经济条件：单亲家庭经济处于弱势
-%	\item 父母社会化：家长社会化解释的重点是育儿，首先是父母的教养实践。这里的论点是，与双亲%家庭相比，单亲家庭、继父家庭和同居家庭中通常存在较弱的父母权威结构，监控和监督较少，这反过%来又降低了儿童接受的养育质量
-%	\item 家庭不稳定：家庭结构的变化会造成负面影响，与家庭类型无关
-%\end{itemize}
-%\end{frame}
 
 \begin{frame}
 \frametitle{文献} 
@@ -99,18 +81,11 @@
 	\par \citet{pong_co-resident_2010}使用我国台湾省样本，发现隔代同住对青少年学业表现有显著正向影响，\citet{zeng_effects_2014}利用CHIP2002年农村样本，指出祖辈对孙辈的影响只在同住的样本中显著，在此基础上\citet{张帆2020}发现三代同住对青少年学业表现有正向影响。
 \end{frame}
 
-
-
-\begin{frame}[allowframebreaks]
+\begin{frame}
 \frametitle{文献:国内详细梳理} 
-这里主要工作是：对国内外文献进行一个详细的论证，借鉴国外文献的结论引出自己的假设，
-
+这里主要工作是：对国内外文献进行一个详细的论证，借鉴国外文献的结论引出自己的假设
 \end{frame}
 
-
-
-
-\end{frame}
 
 \begin{frame}
 \frametitle{文献} 
@@ -433,17 +408,12 @@ Observations & 14,208     & 14,208     & 14,208     & 14,208     & 14,208     & 
 	\end{center}
 \end{frame}
 
-\begin{frame}[allowframebreaks] %允许分页面使用
-   \frametitle{参考文献}
-\tiny
-\bibliographystyle{apalike}
+
+\begin{frame}
+    \frametitle{参考文献}
+\bibliographystyle{plainnat}
 \bibliography{references}
 \end{frame}
+
 %参考文献的案例 \citet{Krueger1999Experimental} \citep{Krueger1999Experimental}  注意两类的不同
-
-
-
 \end{document}
-
-
-
