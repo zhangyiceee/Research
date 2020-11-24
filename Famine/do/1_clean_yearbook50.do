@@ -6,16 +6,7 @@
 **Created	:  	 20191011  
 **Last Modified: 20200421
 *============================================================*
-	capture	clear
-	capture log close
-	set	more off
-	set scrollbufsize 2048000
-	capture log close 
-	cd "/Users/zhangyi/Documents/数据集/年鉴/50年统计资料/"
-	global clean "/Users/zhangyi/Desktop/Famine/clean_data"
-	global output "/Users/zhangyi/Desktop/Famine/output"
-	global working "/Users/zhangyi/Desktop/Famine/working_data"
-
+	
 
 	import excel "汇总.xlsx", sheet("Sheet1") firstrow  clear
 	label var total "万人"
@@ -47,4 +38,10 @@
 	bro provience year edr death_rate pre if year==1959 |year==1960 |year==1961
 	replace edr=0 if edr==.
 
-*合并好数据好，根据出生月份调整饥荒程度
+	save "$working/nj.dta",replace 
+
+	keep if year==1960 
+	rename provience mom_birth_site
+	save "$working/nj_1960.dta",replace
+
+
