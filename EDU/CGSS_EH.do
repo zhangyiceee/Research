@@ -348,7 +348,7 @@
 	h binscatter
 	binscatter edu_year time1  if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
 	binscatter health time1 if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
-	
+	，
 	h cmogram 
 	cmogram edu_year time1  if time1>-2000 &time1< 2000 , ///
 		scatter cut(0) lineat(0) lfit ci(95) histopts(bin(25))
