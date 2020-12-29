@@ -330,6 +330,7 @@
 	save "$workingdir/CGSS2013.dta",replace 
 	append using "$workingdir/CGSS2012.dta" ,force
 	append using "$workingdir/CGSS2010.dta",force
+	
 	save "$workingdir/CGSS.dta",replace 
 
 	use  "$workingdir/CGSS.dta",clear
