@@ -22,6 +22,19 @@
 
 
 
+	use "2014baseline/CEPS基线调查学校数据.dta",clear 
+	tab ple1503,m
+	codebook ple1503
+	gen random =0
+	replace random =1 if ple1503==1 & ple1501 !=1 &  ple1502 !=1 &  ple1504 !=1
+	label var random "随机分班=1"
+	codebook pla23
+
+	keep schids random pla23
+
+
+	save "$working/master.dta",replace 
+
 *调用学生数据
 	use "2014baseline/CEPS基线调查学生数据.dta",clear 
 
@@ -159,21 +172,69 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	replace problem_family=. if b1003==. |b1002==. |b1001==.
 	label var problem_family "问题家庭"
 	tab problem_family,m
+*家庭收入
+	tab steco_3c ,gen(house_income)
 
 *总人数
 	egen total = count(clsids),by(clsids)
 	label var total "班级总人数"
 	bro  clsids total
+	
+*问题家庭人数
 	egen pro_total = count(problem_family),by(clsids)
 	label var pro_total "问题家庭数量"
 	gen ratio =pro_total/total
 	label var ratio "问题家庭比例"
 
-	tab ratio,m
+	gen fix_grade= schids + grade9
 
-	areg stdchn ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
-	areg stdmat ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
-	areg stdeng ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
-	areg cog3pl ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(schids) cluster(schids) r
+*流动儿童比例
+	tab a05 if total <=20
+	tab a05 if total <=30 & total>20
+	tab a05 if total <=40 & total>30
+	tab a05 if total <=50 & total>40
+	tab a05 if total <=60 & total>50
+	tab a05 if total >=60
+
+
+	codebook a05
+	gen migrant=0
+	replace migrant=1 if a05==2 & rural==1
+	replace migrant=. if a05==. 
+	label var migrant "流动儿童"
+	egen mig_total = count(migrant),by(clsids)
+	label var mig_total "班级内流动儿童的人数"
+
+	gen mig_ratio =mig_total/total
+	label var mig_ratio "班级内流动儿童比例"
+	tab mig_ratio,m
+
+	merge m:1 schids using "$working/master.dta"
+	
+	codebook pla23
+
+	keep if random==1 & (pla23==1|pla23==2)
+
+	egen miss=rowmiss(  mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1  schids)
+	tab miss
+	keep if miss==0
+
+
+
+*班级内流动儿童比例对认知的影响
+	areg stdchn mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
+	areg stdmat mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
+	areg stdeng mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
+	areg cog3pl mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
+
+
+
+
+*问题家庭比例的影响
+	tab ratio,m
+	areg stdchn ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
+	areg stdmat ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
+	areg stdeng ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
+	areg cog3pl ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
 
 
