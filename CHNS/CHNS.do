@@ -23,8 +23,16 @@
 *儿童照管
 	use "Master_Childcare_201804/careh_12.dta",clear
 	tab WAVE,m
+	tostring hhid,replace 
+
+	tab K14_HH,m
+
 	use "Master_Childcare_201804/carec_12.dta",clear
 
+	tab k14a,m
+
+
+	tab1  k15-k25,m
 
 
 
