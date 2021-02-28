@@ -1,9 +1,10 @@
 *============================================================*
 **       		 peer effect
-**Goal		:    parent's job loss on children's academic performence
+**Goal		:    班级内部流动儿童比例对学生健康危险行为的影响
 **Data		:    CEPS
-**Author	:  	 ZhangYi zhangyiceee@163.com 15592606739
-**Created	:  	 20201011
+**Author	:  	 Yi Zhang zhangyiceee@163.com 15592606739
+**CoAuthor	:    Yanan Huo
+**Created	:  	 20210228
 **Last Modified: 2020
 *============================================================*
 
@@ -13,12 +14,17 @@
 	set scrollbufsize 2048000
 	capture log close 
 	
-
-*具体文章信息DOI：10.1016/j.econlet.2015.10.025
-	cd "/Users/zhangyi/Documents/数据集/CEPS"
+*===============*
+*YIZHANG DATAdir*
+*===============*
+	cd "/Users/zhangyi/Documents/data/CEPS"
 	global cleandir "/Users/zhangyi/Desktop/CEPS/problem_family/cleandata"
 	global outdir "/Users/zhangyi/Desktop/CEPS/problem_family/output"
 	global working "/Users/zhangyi/Desktop/CEPS/problem_family/workingdata"
+
+*===============*
+*YANAN HUO DATA*
+*===============*
 
 
 
@@ -39,7 +45,7 @@
 	use "2014baseline/CEPS基线调查学生数据.dta",clear 
 
 *年龄
-	gen  age =2014-a02a
+	gen age =2014-a02a
 	label var age "年龄"
 	tab age,m
 *年龄的计算还需要再斟酌
@@ -178,7 +184,7 @@ foreach x of varlist  me_edu_p-me_edu_u {
 *总人数
 	egen total = count(clsids),by(clsids)
 	label var total "班级总人数"
-	bro  clsids total
+	*bro  clsids total
 	
 *问题家庭人数
 	egen pro_total = count(problem_family),by(clsids)
@@ -196,45 +202,92 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	tab a05 if total <=60 & total>50
 	tab a05 if total >=60
 
-
 	codebook a05
 	gen migrant=0
-	replace migrant=1 if a05==2 & rural==1
+	replace migrant=1 if a05==2 
 	replace migrant=. if a05==. 
 	label var migrant "流动儿童"
 	egen mig_total = count(migrant),by(clsids)
 	label var mig_total "班级内流动儿童的人数"
+*除学生本人外流动儿童的比例
+	gen mig_minus_self=mig_total-migrant
+	label var mig_minus_self "除学生本人外流动儿童的人数"
+
 
 	gen mig_ratio =mig_total/total
 	label var mig_ratio "班级内流动儿童比例"
 	tab mig_ratio,m
 
+	gen mig_minus_self_ratio =mig_minus_self/(total-1)
+	label var mig_minus_self_ratio "除学生本人外流动儿童的比例"
+
+*五个朋友中流动儿童
+	gen fre_mig=0
+	replace fre_mig=1 if c20c1==2 |c20c2==2 |c20c3==2 |c20c4==2 |c20c5==2
+	replace fre_mig=. if c20c1==. &c20c2==. &c20c3==. &c20c4==. &c20c5==2
+	label var fre_mig "五个好朋友中有流动儿童"
+
+
 	merge m:1 schids using "$working/master.dta"
+	rename _merge merge1 
+	label var merge1 "校长与基线学生数据合并"
+	save "$working/master_stubase.dta",replace 
+
+	use "2015年/cepsw2studentCN.dta" , clear  
+	/*打架*/
+   	gen fight=w2d0203
+	recode fight(1=0)(2=1)(3=1)(4=1)(5=1)
+	label var fight "打架"
+	ta fight,mi
+
+	 
+	/*抽烟、喝酒*/
+    gen drink=w2d0209
+	recode drink(1=0)(2=1)(3=1)(4=1)(5=1)
+	label var drink "吸烟喝酒"
+	ta drink,mi
 	
-	codebook pla23
+	***欺负弱小同学（0=无 1=有）
+    tab w2d0204,m
+    tab w2d0204,nolabel
 
-	keep if random==1 & (pla23==1|pla23==2)
+    gen beh_qifu=w2d0204
+    replace beh_qifu=0 if w2d0204==1
+    replace beh_qifu=1 if w2d0204==2 | w2d0204==3 | w2d0204==4 | w2d0204==5
+	
+	/*出入网吧、游戏厅*/
+    gen go_webcafes=w2d0210
+	recode go_webcafes (1=0)(2=1)(3=1)(4=1)(5=1)
+	label var go_webcafes "出入网吧和游戏厅"
+	ta go_webcafes,m
+	
+	
+	/*接吻及更亲密的异性身体接触行为*/
+	gen body_contact=.
+	replace body_contact=0 if w2d0602==0 | w2d0603==0
+	replace body_contact=1 if w2d0602==1 | w2d0603==1
+	label var body_contact "接吻及更亲密的接触行为"
+	ta body_contact,m
 
-	egen miss=rowmiss(  mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1  schids)
-	tab miss
-	keep if miss==0
+    /*谈恋爱行为*/
+	
+	gen love=.
+	replace love=0 if w2d05==2
+	replace love=1 if w2d05==1
+	label var love "早恋"
+	ta love,m	
 
 
+	keep ids fight-love
+	save "$working/stu_end.dta",replace 
 
-*班级内流动儿童比例对认知的影响
-	areg stdchn mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
-	areg stdmat mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
-	areg stdeng mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
-	areg cog3pl mig_ratio age female rural minority fa_eduyear mo_eduyear siblings house_income1 ,absorb(fix_grade) cluster(schids) r
+	merge 1:1 ids using "$working/master_stubase.dta"
+
+*保留merge上的样本、随机分班的样本
+	keep if _merge==3 & random==1
+
+*张：你跑一下结果，我自己感觉结果并不是很好
 
 
-
-
-*问题家庭比例的影响
-	tab ratio,m
-	areg stdchn ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
-	areg stdmat ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
-	areg stdeng ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
-	areg cog3pl ratio age female rural minority fa_eduyear mo_eduyear siblings ,absorb(fix_grade) cluster(schids) r
 
 
