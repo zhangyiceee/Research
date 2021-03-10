@@ -14,7 +14,7 @@
 	
 
 
-	cd "/Users/zhangyi/Documents/数据集/CFPS/real_cfps"
+	cd "/Users/zhangyi/Documents/data/CFPS/real_cfps"
 	global cleandir "/Users/zhangyi/Desktop/CFPS/教育健康/cleandata"
 	global outdir "/Users/zhangyi/Desktop/CFPS/教育健康/output"
 	global workingdir "/Users/zhangyi/Desktop/CFPS/教育健康/working"
@@ -204,6 +204,7 @@ restore
 
 
 	binscatter m601 time1  if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
+
 
 
 
