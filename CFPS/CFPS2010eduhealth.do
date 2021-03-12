@@ -1,7 +1,7 @@
 *============================================================*
 **       		CFPS 
 **Goal		:  The impact of parent's education on children's health 
-**Data		:    CFPS2014
+**Data		:    CFPS2010
 **Author	:  	 ZhangYi zhangyiceee@163.com 15592606739
 **Created	:  	 20200928
 **Last Modified: 202009
@@ -16,7 +16,7 @@
 
 	cd "/Users/zhangyi/Documents/data/CFPS/real_cfps"
 	global cleandir "/Users/zhangyi/Desktop/CFPS/教育健康/cleandata"
-	global outdir "/Users/zhangyi/Desktop/CFPS/教育健康/output"
+	global outdir "/Users/zhangyi/Desktop/CFPS/教育健康/outout"
 	global workingdir "/Users/zhangyi/Desktop/CFPS/教育健康/working"
 
 
@@ -444,22 +444,56 @@ restore
 
 	order middle eduyear mht_index depressed nervous restless hopeless difficult meaningless gender han live_birth_3 live_birth_12 fa_absent_3 mo_absent_3 fa_absent_12 mo_absent_12 faeduyear moeduyear,after(treat)
 
-	iebaltab middle eduyear mht_index depressed ///
-	nervous restless hopeless difficult meaningless ///
-	gender han live_birth_3 live_birth_12 fa_absent_3 ///
-	mo_absent_3 fa_absent_12 mo_absent_12 faeduyear moeduyear,grpvar(treat)  control(0)  save($outdir/edu_mht.xlsx) replace
+	gen t_month=round(t/30)
+
+	egen edu_y_bin=mean(eduyear),by(t_month)
+	egen edu_c_bin=mean(middle),by(t_month)
+	label var  edu_y_bin "受教育年限的队列均值"
+	label var  edu_c_bin "是否完成初中的队列均值"
+
+*figure1a
+	twoway (scatter edu_c_bin t_month if t_month>=-156 & t_month<=156 , xline(0) xti("Birth Cohort") yti("完成初中") msymbol(smcircle_hollow)) ///
+	(lfit  edu_c_bin t_month if t_month<=156 & t_month>0 )(lfit  edu_c_bin t_month if t_month>=-156 & t_month<0 ) ///
+	 ,legend( label(1 "Cohort Average" )label(2 "Local linear fit")label(3 "Local linear fit")) 
+	 graph save $outdir/figure1a.gph,replace
 
 
+*figure1b
+	twoway (scatter edu_y_bin t_month if t_month>=-156 & t_month<=156 ,ylabel(#5) xline(0) xti("Birth Cohort") yti("Total Year of Schooling") msymbol(smcircle_hollow)) ///
+	 (lfit edu_y_bin t_month if t_month<=156 & t_month>0 )(lfit edu_y_bin t_month if t_month>=-156 & t_month<0 ) ///
+ 	,legend( label(1 "Cohort Average" )label(2 "Local linear fit")label(3 "Local linear fit"))   
+	 graph save $outdir/figure1b.gph,replace
 
-
-
-
-
-
-
-
-
+*合并表a、b
+ 	graph combine $outdir/figure1a.gph $outdir/figure1b.gph   ,c(1)
+	graph save $outdir/figure1.gph,replace
 
 	
+*
+	egen std_mht=std(mht_index)
+	egen mht_bin=mean(std_mht),by(t_month)
+	
+	twoway (scatter mht_bin t_month if t_month>=-120 & t_month<=120 , xline(0) xti("Birth Cohort") yti("心理健康指数") msymbol(smcircle_hollow)) ///
+	(lfit  mht_bin t_month if t_month<=120 & t_month>0 )(lfit  mht_bin t_month if t_month>=-120 & t_month<0 ) ///
+	 ,legend( label(1 "Cohort Average" )label(2 "Local linear fit")label(3 "Local linear fit")) 
+	graph save $outdir/figure2.gph,replace
+
+
+	foreach x of varlist depressed-meaningless{
+		capture egen st_`x'=std(`x')
+		capture egen `x'_bin=mean(st_`x'),by(t_month)
+	twoway (scatter `x'_bin t_month if t_month>=-120 & t_month<=120 , xline(0) xti("Birth Cohort") yti("`x'") msymbol(smcircle_hollow)) ///
+	(lfitci  `x'_bin t_month if t_month<=120 & t_month>0 )(lfitci  `x'_bin t_month if t_month>=-120 & t_month<0 ) ///
+	 ,legend( label(1 "Cohort Average" )label(2 "Local linear fit")label(3 "Local linear fit")) 
+	graph save $outdir/figure_`x'.gph,replace
+	}
+	graph combine $outdir/figure_restless.gph $outdir/figure_depressed.gph $outdir/figure_difficult.gph $outdir/figure_hopeless.gph $outdir/figure_meaningless.gph $outdir/figure_nervous.gph ,c(3)
+
+
+*table3,
+	reg middle treat
+	reg eduyear treat
+
+
 
 
