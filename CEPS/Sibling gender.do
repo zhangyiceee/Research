@@ -20,10 +20,8 @@
 	cd "/Users/zhangyi/Documents/data/CEPS"
 	
 
-
 *调用学生数据
 	use "2014baseline/CEPS基线调查学生数据.dta",clear 
-
 *年龄
 	gen age =2014-a02a
 	label var age "年龄"
@@ -143,13 +141,13 @@ foreach x of varlist  me_edu_p-me_edu_u {
 *家庭收入
 	tab steco_3c ,gen(house_income)
 
-
 /*清理样本
 1、保留非独生子女样本
 2、删掉有哥哥姐姐的样本
 剩下的就是有弟弟或妹妹的样本
 */
 
+preserve
 
 *1、保留非独生子女样本
 	codebook b01
@@ -216,5 +214,56 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	reg cog3pl bro_young $con1 i.a02a if  female==0 &rural==0
 	reg cog3pl sister_young $con1 i.a02a if  female==0 &rural==0
 
+
+restore
+	
+	codebook b01
+	keep if b01==2
+	
+	gen bro=1 if b0201==1 | b0202==1
+	replace bro=0 if b0201!=1 | b0202!=1
+
+*心理健康
+	codebook a1805
+	egen mental_health=rowmean(a1801-a1805)
+
+	label var mental_health "心理健康"
+
+
+*控制变量
+	global con1   rural minority fa_eduyear mo_eduyear house_income1
+
+*对女性认知的影响
+	reg cog3pl bro $con1 i.a02a if female==1 
+
+	*对男生认知的影响 
+	reg cog3pl bro $con1 i.a02a if  female==0 
+
+
+*对农村女性认知的影响
+	reg cog3pl bro $con1 i.a02a if female==1  &  rural==1
+
+*对城市女性认知的影响
+	reg cog3pl bro $con1 i.a02a if female==1  &  rural==0
+
+	
+
+*对农村男生认知的影响 
+	reg cog3pl bro $con1 i.a02a if  female==0 &rural==1
+
+*对城市男生认知的影响 
+	reg cog3pl bro $con1 i.a02a if  female==0 &rural==0
+	
+
+*有孩子的数量
+	replace b0201=0 if b0201==.
+	replace b0201=0 if b0202==.
+	replace b0201=0 if b0203==.
+	replace b0201=0 if b0204==.
+	egen geshu=rowtotal(b0201 b0202  b0203  b0203)
+
+	reg cog3pl geshu $con1 i.a02a if female==1
+
+	reg cog3pl geshu $con1 i.a02a if female==0
 
 
