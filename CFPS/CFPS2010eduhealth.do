@@ -357,8 +357,6 @@ restore
 *母亲在孩子14岁时是否为党员
 
 
-*
-
 
 
 *生成各个省份的受到干预队列的具体时间
@@ -446,6 +444,7 @@ restore
 
 	gen t_month=round(t/30)
 
+
 	egen edu_y_bin=mean(eduyear),by(t_month)
 	egen edu_c_bin=mean(middle),by(t_month)
 	label var  edu_y_bin "受教育年限的队列均值"
@@ -459,17 +458,17 @@ restore
 
 
 *figure1b
-	twoway (scatter edu_y_bin t_month if t_month>=-156 & t_month<=156 ,ylabel(#5) xline(0) xti("Birth Cohort") yti("Total Year of Schooling") msymbol(smcircle_hollow)) ///
-	 (lfit edu_y_bin t_month if t_month<=156 & t_month>0 )(lfit edu_y_bin t_month if t_month>=-156 & t_month<0 ) ///
+	twoway (scatter edu_y_bin t_halfY if t_month>=-156 & t_month<=156 ,ylabel(#5) xline(0) xti("Birth Cohort") yti("Total Year of Schooling") msymbol(smcircle_hollow)) ///
+	 (lfit edu_y_bin t_halfY if t_month<=156 & t_month>0 )(lfit edu_y_bin t_halfY if t_month>=-156 & t_month<0 ) ///
  	,legend( label(1 "Cohort Average" )label(2 "Local linear fit")label(3 "Local linear fit"))   
-	 graph save $outdir/figure1b.gph,replace
+
 
 *合并表a、b
  	graph combine $outdir/figure1a.gph $outdir/figure1b.gph   ,c(1)
 	graph save $outdir/figure1.gph,replace
 
 	
-*
+*心理健康的graph
 	egen std_mht=std(mht_index)
 	egen mht_bin=mean(std_mht),by(t_month)
 	
@@ -488,11 +487,6 @@ restore
 	graph save $outdir/figure_`x'.gph,replace
 	}
 	graph combine $outdir/figure_restless.gph $outdir/figure_depressed.gph $outdir/figure_difficult.gph $outdir/figure_hopeless.gph $outdir/figure_meaningless.gph $outdir/figure_nervous.gph ,c(3)
-
-
-*table3,
-	reg middle treat
-	reg eduyear treat
 
 
 
