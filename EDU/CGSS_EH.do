@@ -14,7 +14,7 @@
 	
 
 
-	cd "/Users/zhangyi/Documents/数据集/CGSS"
+	cd "/Users/zhangyi/Documents/data/CGSS"
 	global outdir "/Users/zhangyi/Desktop/EDU_HEALTH/output"
 	global workingdir "/Users/zhangyi/Desktop/EDU_HEALTH/working"
 
@@ -121,7 +121,7 @@
 	replace mo_edu_h =0 if a90b <6
 	label var mo_edu_h "母亲受教育程度在高中及以上"
 
-
+,
 	save "$workingdir/CGSS2010.dta",replace 
 
 	use "2012/cgss2012_14.dta",clear
@@ -294,7 +294,7 @@
 *民族：汉族=1 
 	codebook a4
 	gen hanzu=0
-	replace hanzu=1 if a4==1
+	replace  =1 if a4==1
 	label var hanzu "汉族=1"
 
 *婚姻:已婚=1
@@ -345,16 +345,37 @@
 	keep if birth_day > d(01sep1971) & birth_day < d(01sep1991)
 	tab time1,m
 	keep if edu_year >=12 & edu_year !=.
-	
+	gen iv=0
+	replace iv=1 if time1 >=0
+
+
+
+
 	h binscatter
 	binscatter edu_year time1  if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
 	binscatter health time1 if time1>-2000 &time1< 2000 ,rd(0) n(100) linetype(lfit)
-	，
+	
+
 	h cmogram 
 	cmogram edu_year time1  if time1>-2000 &time1< 2000 , ///
 		scatter cut(0) lineat(0) lfit ci(95) histopts(bin(25))
 
 	cmogram health time1  if time1>-2000 &time1< 2000 , ///
 		scatter cut(0) lineat(0) lfit ci(95) histopts(bin(25))
+
+
+	ivreg2 health edu_year male urban hanzu marry (edu_year=iv)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
