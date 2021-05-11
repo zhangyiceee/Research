@@ -421,9 +421,10 @@ restore
 	replace testscore=stdmat if subject=="数学" 
 	replace testscore=stdeng if subject=="英语" 
 
-	sort clsids subject
-	by clsids subject :egen x1_mean=mean(testscore)
-	by clsids subject :egen x1_sd=sd(testscore)
+
+	sort schids grade9 subject
+	by schids grade9 subject :egen x1_mean=mean(testscore)
+	by schids grade9 subject :egen x1_sd=sd(testscore)
 	gen std_test=(testscore-x1_mean)/x1_sd
 	label var std_test "标准化成绩"
 
