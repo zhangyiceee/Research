@@ -21,7 +21,7 @@ ___/   /   /___/   /   /___/
 	
 
 *具体文章信息DOI：10.1016/j.econlet.2015.10.025
-	cd "/Users/zhangyi/Documents/数据集/CEPS"
+	cd "/Users/zhangyi/Documents/data/CEPS"
 	global cleandir "/Users/zhangyi/Desktop/CEPS/behavior/clean"
 	global outdir "/Users/zhangyi/Desktop/CEPS/behavior/output"
 	global working "/Users/zhangyi/Desktop/CEPS/behavior/working"
@@ -162,7 +162,22 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	tab c12,m
 	codebook c12
 	clonevar selfbelief=c12
-	label var  selfbelief  "自我感知的排名"
+	label var selfbelief  "自我感知的排名"
+
+*学生自己真实的学习情况，在班级内部进行排名
+	tab1 tr_chn tr_mat tr_eng,m
+	egen score=rowtotal(tr_chn tr_mat tr_eng)
+	label var score "总分"
+	tab score,m
+
+	sort clsids score
+	sort clsids
+	bys clsids: gen paimin= group(5)
+	*bro clsids score paimin
+	label var paimin "总分排名"
+
+	clonevar paimin_t=paimin
+	label var paimin_t "理想状况应该感知的排名"
 
 	merge 1:1 ids using "2014baseline/CEPS基线调查家长数据.dta"
 
@@ -177,12 +192,17 @@ foreach x of varlist  me_edu_p-me_edu_u {
 
 
 	twoway  (lfit parentbelief selfbelief )(lfit selfbelief_1 selfbelief ), legend(label(1 父母感知) label(2 完全知晓的理想情况))
+	twoway  (lfit parentbelief selfbelief if bb01==1 )(lfit selfbelief_1 selfbelief )(lfit parentbelief selfbelief if bb01!=1 ), legend(label(1 父母参加家长会感知) label(2 完全知晓的理想情况)label(3 父母未参加家长会的感知))
 
-gen fudaoban=0
-replace fudaoban=1 if ba02==1
 
-	twoway  (qfit fudaoban parentbelief  )(qfit fudaoban selfbelief ), legend(label(1 父母感知的决策) label(2 真实情况))
+	twoway  (lfit paimin_t paimin )(lfit parentbelief paimin), legend(label(1 真是情况) label(2 父母的感知))
 	
+	twoway  (lfit parentbelief paimin if bb01==1 )(lfit paimin_t paimin )(lfit parentbelief paimin if bb01!=1 ), legend(label(1 父母参加家长会感知) label(2 理想状况应该感知的排名)label(3 父母未参加家长会的感知))
+
+
+
+
+
 
 
 
