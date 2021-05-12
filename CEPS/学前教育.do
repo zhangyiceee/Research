@@ -497,6 +497,13 @@ restore
 	areg std_test pre_ratio pre_school $stucontrol  i.sub ,absorb(group) cluster(schids) r
 
 	areg std_test pre_ratio pre_school $stucontrol $teacontrol i.sub ,absorb(group) cluster(schids) r
+*学生层面固定效应
+	areg std_test pre_ratio pre_school   i.sub ,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,No,Teacher Controls,No) word excel tex replace 
+	areg std_test pre_ratio pre_school $stucontrol  i.sub ,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,Yes,Teacher Controls,No) word excel tex append
+	areg std_test pre_ratio pre_school $stucontrol $teacontrol i.sub ,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,Yes,Teacher Controls,Yes) word excel tex append 
 	
 	
 
