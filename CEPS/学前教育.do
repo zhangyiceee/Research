@@ -230,6 +230,11 @@ foreach x of varlist  me_edu_p-me_edu_u {
 
 *Social activities: Private recreation
 
+*年级的固定效应变量
+	tostring grade9 schids,replace force  
+	gen group=schids+grade9
+	label var group "学校年级固定效应"
+	destring grade9 schids group,replace 
 
 
 *保存数据，与教师数据合并
@@ -429,11 +434,6 @@ restore
 	replace sub=2 if subject=="数学" 
 	replace sub=3 if subject=="英语"
 	label var sub "科目" 
-	tostring grade9 schids,replace force  
-	gen group=schids+grade9
-	label var group "学校年级固定效应"
-
-	destring grade9 schids group,replace 
 
 
 	save "$working/stu_tea_master.dta",replace
@@ -450,12 +450,6 @@ restore
 
 	global stucontrol "age female rural minority repeater skip fa_eduyear mo_eduyear house_income2 house_income3"
 	global teacontrol "tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience"
-
-	tostring grade9 schids,replace force  
-	gen group=schids+grade9
-	label var group "学校年级固定效应"
-
-	destring grade9 schids group,replace 
 
 	
 	iebaltab $stucontrol ,grpvar(pre_school) save($outdir/balance.xlsx) replace
