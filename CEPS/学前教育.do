@@ -4,7 +4,7 @@
 **Data		:    CEPS
 **Author	:  	 Yi Zhang zhangyiceee@163.com 15592606739
 **CoAuthor	:    Yanan Huo
-**Created	:  	 20210228
+**Created	:  	 20210511
 **Last Modified: 2020
 *============================================================*
 
@@ -25,8 +25,6 @@
 *===============*
 *YANAN HUO DATA*
 *===============*
-
-
 
 	use "2014baseline/CEPS基线调查学校数据.dta",clear 
 	tab ple1503,m
@@ -290,8 +288,6 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	rename chnb06 zgz_3
 	rename chnb07 ty_3
 	rename chnb08 jl_3
-
-
 	rename hra01 sex_4
 	rename hra02 year_4
 	rename hra03 marr_4
@@ -463,7 +459,6 @@ restore
 
 	
 	iebaltab $stucontrol ,grpvar(pre_school) save($outdir/balance.xlsx) replace
-	areg pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
 	
 	areg pre_ratio pre_school $stucontrol ,absorb(group) cluster(group) r
 	outreg2 using "$outdir/balance.doc",   replace  addtext(School-grade FE,YES)  addstat(F-test,e(F),Prob>F,e(p),adjust R2,e(r2_a))
@@ -493,10 +488,7 @@ restore
 *保留随机分班样本
 	keep if random==1
 
-*stu control variable
-	areg std_test pre_ratio pre_school $stucontrol  i.sub ,absorb(group) cluster(schids) r
 
-	areg std_test pre_ratio pre_school $stucontrol $teacontrol i.sub ,absorb(group) cluster(schids) r
 *学生层面固定效应
 	areg std_test pre_ratio pre_school   i.sub ,absorb(group) cluster(clsids) r
 	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,No,Teacher Controls,No) word excel tex replace 
@@ -505,6 +497,8 @@ restore
 	areg std_test pre_ratio pre_school $stucontrol $teacontrol i.sub ,absorb(group) cluster(clsids) r
 	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,Yes,Teacher Controls,Yes) word excel tex append 
 	
+
+
 	
 
 
