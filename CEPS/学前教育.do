@@ -460,7 +460,7 @@ restore
 	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
 	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
 	outreg2  using "$outdir/cog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace 
-	areg cog3pl pre_ratio pre_school $stucontrol tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience,absorb(group) cluster(clsids) r
+	*areg cog3pl pre_ratio pre_school $stucontrol tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience,absorb(group) cluster(clsids) r
 	*outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace 
 	
 	areg Depressed pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
