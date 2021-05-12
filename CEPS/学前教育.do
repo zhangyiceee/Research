@@ -249,17 +249,17 @@ foreach x of varlist  me_edu_p-me_edu_u {
 	*hrc01 hrc02 hrc03 hrc04 hrc05 hrc06 hrc07 hrc08	
 	*如果班主任为英语老师，替换英语老师信息
 	foreach   x of numlist 1 2 3 4 5 6 7 8{
-		replace engb0`x'=hrc0`x' if hra01==3 
+		replace engb0`x'=hrc0`x' if hra01==3  & engb0`x'==.
 	}
 	*如果班主任为语文老师，替换语文老师信息
 
 	foreach   x of numlist 1 2 3 4 5 6 7 8{
-		replace chnb0`x'=hrc0`x' if hra01==2
+		replace chnb0`x'=hrc0`x' if hra01==2  & chnb0`x'==.
 	}
 	*如果班主任为数学老师，替换数学老师信息
 
 	foreach   x of numlist 1 2 3 4 5 6 7 8{
-		replace matb0`x'=hrc0`x' if hra01==1
+		replace matb0`x'=hrc0`x' if hra01==1 & chnb0`x'==.
 	}
 	
 	keep clsids schids grade9 engb01 engb02 engb03 engb04 engb05 engb06 engb07 engb08 ///
