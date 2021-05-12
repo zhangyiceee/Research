@@ -464,13 +464,27 @@ restore
 	
 	iebaltab $stucontrol ,grpvar(pre_school) save($outdir/balance.xlsx) replace
 	areg pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
+	
+	areg pre_ratio pre_school $stucontrol ,absorb(group) cluster(group) r
+	outreg2 using "$outdir/balance.doc",   replace  addtext(School-grade FE,YES)  addstat(F-test,e(F),Prob>F,e(p),adjust R2,e(r2_a))
 
-	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
-	areg Depressed pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
-	areg blue pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
-	areg unhappy pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
-	areg Pessimistic pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
-	areg cofidence pre_ratio pre_school $stucontrol,absorb(group) cluster(group) r
+	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/cog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace 
+	areg cog3pl pre_ratio pre_school $stucontrol tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience,absorb(group) cluster(clsids) r
+	*outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace 
+	
+	areg Depressed pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace  
+	areg blue pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex append 
+	areg unhappy pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex append 
+	areg Pessimistic pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex append 
+	areg cofidence pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
+	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex append 
+
 
 
 *对考试成绩的影响
