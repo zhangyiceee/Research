@@ -13,7 +13,6 @@
 	set	more off
 	set scrollbufsize 2048000
 	capture log close 
-	
 *===============*
 *YIZHANG DATAdir*
 *===============*
@@ -429,6 +428,7 @@ restore
 	gen std_test=(testscore-x1_mean)/x1_sd
 	label var std_test "标准化成绩"
 
+*学科固定效应
 	gen sub=.
 	replace sub=1 if subject=="语文" 
 	replace sub=2 if subject=="数学" 
@@ -438,25 +438,22 @@ restore
 
 	save "$working/stu_tea_master.dta",replace
 	
-*=====================================================================*
-*==============================Analysis===============================*
-*=====================================================================*
+	*=====================================================================*
+	*==============================Analysis===============================*
+	*=====================================================================*
 	global stucontrol "age female rural minority repeater skip fa_eduyear mo_eduyear house_income2 house_income3"
 	global teacontrol "tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience"
 
 *Balance Test  应该在前面做
 	use "$working/stu_head.dta",clear
 	keep if random==1
-
 	global stucontrol "age female rural minority repeater skip fa_eduyear mo_eduyear house_income2 house_income3"
 	global teacontrol "tea_age tea_female tea_jl tea_school  tea_marr2 tea_zgz tea_shifan tea_preexperience"
 
-	
 	iebaltab $stucontrol ,grpvar(pre_school) save($outdir/balance.xlsx) replace
 	
 	areg pre_ratio pre_school $stucontrol ,absorb(group) cluster(group) r
 	outreg2 using "$outdir/balance.doc",   replace  addtext(School-grade FE,YES)  addstat(F-test,e(F),Prob>F,e(p),adjust R2,e(r2_a))
-
 	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
 	areg cog3pl pre_ratio pre_school $stucontrol,absorb(group) cluster(clsids) r
 	outreg2  using "$outdir/cog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex replace 
@@ -475,14 +472,10 @@ restore
 	outreg2  using "$outdir/nocog",adjr2 keep(pre_ratio pre_school) addtext(School-grade FE,YES,Student Controls,Yes) word excel tex append 
 
 
-
 *对考试成绩的影响
 	use "$working/stu_tea_master.dta",clear
-
 *保留随机分班样本
 	keep if random==1
-
-
 *学生层面固定效应
 	areg std_test pre_ratio pre_school   i.sub ,absorb(group) cluster(clsids) r
 	outreg2  using "$outdir/std_test",adjr2 keep(pre_ratio pre_school) addtext(Subject FE,YES,School-grade FE,YES,Student Controls,No,Teacher Controls,No) word excel tex replace 
